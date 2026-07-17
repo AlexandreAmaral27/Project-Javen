@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Javen Store</title>
+<style>
+    *{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#f5f5f5;
+}
+
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 8%;
+background:#0f172a;
+color:#fff;
+position:sticky;
+top:0;
+}
+
+.logo img{
+    width:90px;
+    border-radius: 50%;
+}
+nav ul{
+display:flex;
+gap:30px;
+list-style:none;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+}
+
+.icons{
+display:flex;
+align-items:center;
+gap:20px;
+font-size:22px;
+cursor:pointer;
+}
+
+.cart{
+position:relative;
+}
+
+.cart span{
+position:absolute;
+top:-10px;
+right:-10px;
+background:red;
+color:white;
+width:20px;
+height:20px;
+border-radius:50%;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:12px;
+}
+
+.hero{
+
+height:80vh;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+text-align:center;
+
+background:linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.5)),
+url('../img/hero.jpg') center/cover;
+
+color:white;
+
+}
+
+.hero h1{
+font-size:55px;
+}
+
+.hero p{
+margin:20px 0;
+}
+
+.hero button{
+padding:15px 40px;
+border:none;
+background:#00bfff;
+color:white;
+font-size:18px;
+border-radius:30px;
+cursor:pointer;
+}
+
+.pesquisa{
+padding:40px;
+text-align:center;
+}
+
+.pesquisa input{
+
+width:60%;
+padding:15px;
+border-radius:30px;
+border:1px solid #ddd;
+
+}
+
+.produtos{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+
+gap:30px;
+
+padding:50px 8%;
+
+}
+
+.card{
+
+background:white;
+
+padding:20px;
+
+text-align:center;
+
+border-radius:15px;
+
+box-shadow:0 10px 20px rgba(0,0,0,.1);
+
+transition:.3s;
+
+}
+
+.card:hover{
+transform:translateY(-10px);
+}
+
+.card img{
+
+width:100%;
+height:220px;
+object-fit:cover;
+
+}
+
+.card button{
+
+margin-top:15px;
+
+padding:12px 30px;
+
+border:none;
+
+background:#00bfff;
+
+color:white;
+
+border-radius:25px;
+
+cursor:pointer;
+
+}
+
+#menu-btn{
+display:none;
+}
+
+@media(max-width:768px){
+
+nav{
+
+display:none;
+
+position:absolute;
+
+top:80px;
+
+left:0;
+
+width:100%;
+
+background:#0f172a;
+
+}
+
+nav ul{
+
+flex-direction:column;
+
+padding:20px;
+
+}
+
+#menu-btn{
+
+display:block;
+
+}
+
+.hero h1{
+
+font-size:34px;
+
+}
+
+.pesquisa input{
+
+width:90%;
+
+}
+
+}
+</style>
+
+<style>
+    html{
+    scroll-behavior:smooth;
+}
+
+.info{
+    padding:70px 8%;
+    background:#fff;
+}
+
+.info h2{
+    text-align:center;
+    color:#0f172a;
+    font-size:35px;
+    margin-bottom:20px;
+}
+
+.info p{
+    max-width:900px;
+    margin:auto;
+    text-align:center;
+    line-height:1.8;
+    color:#555;
+}
+
+.promocoes{
+    background:#eef7ff;
+}
+
+.contacto{
+    background:#0f172a;
+    color:white;
+}
+
+.contacto h2,
+.contacto p{
+    color:white;
+}
+
+.contacto form{
+    max-width:600px;
+    margin:30px auto 0;
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+.contacto input,
+.contacto textarea{
+    padding:15px;
+    border:none;
+    border-radius:10px;
+    font-size:16px;
+}
+
+.contacto button{
+    padding:15px;
+    border:none;
+    background:#00bfff;
+    color:white;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:18px;
+}
+</style>
+<style>
+    body{
+    background:#f3f6fb;
+}
+
+/* Header */
+header{
+    backdrop-filter:blur(18px);
+    background:rgba(15,23,42,.95);
+    box-shadow:0 10px 30px rgba(0,0,0,.2);
+    z-index:1000;
+}
+
+nav a{
+    position:relative;
+    font-weight:bold;
+    transition:.3s;
+}
+
+nav a::after{
+    content:'';
+    position:absolute;
+    left:0;
+    bottom:-6px;
+    width:0%;
+    height:3px;
+    background:#00bfff;
+    transition:.4s;
+}
+
+nav a:hover{
+    color:#00bfff;
+}
+
+nav a:hover::after{
+    width:100%;
+}
+
+/* Hero */
+
+.hero{
+    position:relative;
+    overflow:hidden;
+}
+
+.hero::before{
+    content:'';
+    position:absolute;
+    width:600px;
+    height:600px;
+    background:#00bfff;
+    border-radius:50%;
+    filter:blur(180px);
+    top:-200px;
+    right:-200px;
+    opacity:.2;
+}
+
+.texto{
+    animation:fadeUp 1s;
+}
+
+@keyframes fadeUp{
+
+from{
+
+opacity:0;
+transform:translateY(60px);
+
+}
+
+to{
+
+opacity:1;
+transform:translateY(0);
+
+}
+
+}
+
+.hero button{
+
+transition:.3s;
+
+box-shadow:0 10px 25px rgba(0,191,255,.4);
+
+}
+
+.hero button:hover{
+
+transform:translateY(-5px) scale(1.05);
+
+background:#0099dd;
+
+}
+
+/* Pesquisa */
+
+.pesquisa input{
+
+transition:.4s;
+
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+}
+
+.pesquisa input:focus{
+
+outline:none;
+
+border:2px solid #00bfff;
+
+transform:scale(1.02);
+
+}
+
+/* Cards */
+
+.card{
+
+overflow:hidden;
+
+transition:.4s;
+
+}
+
+.card:hover{
+
+transform:translateY(-15px);
+
+box-shadow:0 25px 45px rgba(0,0,0,.15);
+
+}
+
+.card img{
+
+transition:.5s;
+
+}
+
+.card:hover img{
+
+transform:scale(1.08);
+
+}
+
+.card h3{
+
+margin:15px 0;
+
+font-size:22px;
+
+}
+
+.card p{
+
+font-size:20px;
+
+font-weight:bold;
+
+color:#00bfff;
+
+}
+
+.card button{
+
+transition:.3s;
+
+}
+
+.card button:hover{
+
+background:#0f172a;
+
+}
+
+/* Scrollbar */
+
+::-webkit-scrollbar{
+
+width:10px;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+background:#00bfff;
+
+border-radius:20px;
+
+}
+
+/* Promoções */
+
+.promocoes{
+
+background:linear-gradient(135deg,#eef7ff,#ffffff);
+
+}
+
+.promocoes h2{
+
+margin-bottom:30px;
+
+}
+
+/* Contacto */
+
+.contacto{
+
+background:linear-gradient(135deg,#0f172a,#111827);
+
+}
+
+.contacto input,
+.contacto textarea{
+
+background:#ffffff;
+
+transition:.3s;
+
+}
+
+.contacto input:focus,
+.contacto textarea:focus{
+
+outline:none;
+
+box-shadow:0 0 20px rgba(0,191,255,.5);
+
+}
+
+.contacto button{
+
+transition:.3s;
+
+}
+
+.contacto button:hover{
+
+background:white;
+
+color:#0f172a;
+
+}
+</style>
+
+<link rel="stylesheet" href="css/style.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">
+    <a href="#">
+        <img src="imagens/logo/logo.jpeg" alt="Javen Logo">
+    </a>
+</div>
+
+<nav>
+
+<ul id="menu">
+
+<li><a href="#inicio">Início</a></li>
+
+<li><a href="#produtos">Produtos</a></li>
+
+<li><a href="#promocoes">Promoções</a></li>
+
+<li><a href="#contacto">Contacto</a></li>
+
+</ul>
+
+</nav>
+
+<div class="icons">
+
+<i class="fas fa-search"></i>
+
+<div class="cart">
+<i class="fas fa-shopping-cart"></i>
+<span id="contador">0</span>
+</div>
+
+<div id="menu-btn">
+<i class="fas fa-bars"></i>
+</div>
+
+</div>
+
+</header>
+
+<section class="hero">
+
+<div class="texto">
+
+<h1>Carregadores e Acessórios Originais</h1>
+
+<p>Entrega rápida em todo país.</p>
+
+<button>Comprar Agora</button>
+
+</div>
+
+</section>
+
+<section class="pesquisa">
+
+<input
+type="text"
+id="buscar"
+placeholder="Pesquisar produtos...">
+
+</section>
+
+<section class="produtos" id="produtos">
+
+<div class="card">
+
+<img src="img/produtos/carregador.jpg">
+
+<h3>Carregador Tipo-C</h3>
+
+<p>12.000 Kz</p>
+
+<button onclick="addCarrinho()">
+Adicionar
+</button>
+
+</div>
+
+<div class="card">
+
+<img src="img/produtos/fone.jpg">
+
+<h3>Fone Bluetooth</h3>
+
+<p>18.000 Kz</p>
+
+<button onclick="addCarrinho()">
+Adicionar
+</button>
+
+</div>
+
+<div class="card">
+
+<img src="img/produtos/powerbank.jpg">
+
+<h3>Power Bank</h3>
+
+<p>25.000 Kz</p>
+
+<button onclick="addCarrinho()">
+Adicionar
+</button>
+
+</div>
+
+</section>
+
+<section class="info promocoes" id="promocoes">
+
+<h2>🔥 Promoções</h2>
+
+<p>
+Aproveite as nossas promoções exclusivas em carregadores,
+power banks, fones Bluetooth e muitos outros acessórios.
+Descontos até 30% durante esta semana.
+</p>
+
+</section>
+
+<section class="hero" id="inicio"></section>
+
+<section class="produtos" id="produtos"></section>
+
+<section class="info contacto" id="contacto">
+
+<h2>📞 Contacto</h2>
+
+<p>
+Entre em contacto connosco para encomendas ou informações.
+</p>
+
+<form>
+
+<input type="text" placeholder="Nome">
+
+<input type="email" placeholder="Email">
+
+<textarea rows="5" placeholder="Escreva a sua mensagem"></textarea>
+
+<button type="submit">
+Enviar Mensagem
+</button>
+
+</form>
+
+</section>
+
+<script src="js/script.js"></script>
+<script>
+
+let contador=0;
+
+function addCarrinho(){
+
+contador++;
+
+document.getElementById("contador").innerHTML=contador;
+
+const cart=document.querySelector(".cart");
+
+cart.animate([
+
+{transform:"scale(1)"},
+
+{transform:"scale(1.3)"},
+
+{transform:"scale(1)"}
+
+],{
+
+duration:300
+
+});
+
+}
+
+/* Pesquisa */
+
+const pesquisa=document.getElementById("buscar");
+
+pesquisa.addEventListener("keyup",()=>{
+
+const texto=pesquisa.value.toLowerCase();
+
+const cards=document.querySelectorAll(".card");
+
+cards.forEach(card=>{
+
+const nome=card.querySelector("h3").innerText.toLowerCase();
+
+card.style.display=nome.includes(texto)?"block":"none";
+
+});
+
+});
+
+/* Revelação ao descer */
+
+const elementos=document.querySelectorAll(".card,.info");
+
+const observer=new IntersectionObserver((entries)=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.style.opacity="1";
+
+entry.target.style.transform="translateY(0)";
+
+}
+
+});
+
+});
+
+elementos.forEach(el=>{
+
+el.style.opacity="0";
+
+el.style.transform="translateY(50px)";
+
+el.style.transition=".8s";
+
+observer.observe(el);
+
+});
+
+</script>
+
+
+</body>
+</html>
