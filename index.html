@@ -1,212 +1,604 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="shortcut icon" href="imagens/logo/logo1.jpeg" type="image/x-icon">
 <title>Javen Store</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+
 <style>
-    *{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
+
+/* =====================
+RESET
+===================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',Arial,sans-serif;
 }
+
+
+html{
+    scroll-behavior:smooth;
+}
+
 
 body{
-background:#f5f5f5;
+    background:#f3f6fb;
+    color:#111827;
 }
+
+
+/* =====================
+HEADER
+===================== */
+
 
 header{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:20px 8%;
-background:#0f172a;
-color:#fff;
-position:sticky;
-top:0;
+
+    width:100%;
+    padding:15px 8%;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    background:#0f172a;
+
+    position:sticky;
+    top:0;
+    z-index:1000;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.2);
+
 }
+
+
 
 .logo img{
-    width:90px;
-    border-radius: 50%;
+
+    width:80px;
+    height:80px;
+
+    object-fit:cover;
+
+    border-radius:50%;
+
 }
+
+
+
 nav ul{
-display:flex;
-gap:30px;
-list-style:none;
+
+    display:flex;
+    gap:35px;
+
+    list-style:none;
+
 }
+
+
 
 nav a{
-color:white;
-text-decoration:none;
+
+    color:white;
+    text-decoration:none;
+
+    font-weight:600;
+
+    position:relative;
+
+    transition:.3s;
+
 }
+
+
+
+nav a:hover{
+
+    color:#00bfff;
+
+}
+
+
+
+nav a::after{
+
+    content:"";
+
+    position:absolute;
+
+    bottom:-8px;
+    left:0;
+
+    width:0;
+    height:3px;
+
+    background:#00bfff;
+
+    transition:.3s;
+
+}
+
+
+nav a:hover::after{
+
+    width:100%;
+
+}
+
+
+/* ICONES */
+
 
 .icons{
-display:flex;
-align-items:center;
-gap:20px;
-font-size:22px;
-cursor:pointer;
+
+    display:flex;
+    align-items:center;
+
+    gap:20px;
+
+    color:white;
+
+    font-size:22px;
+
 }
+
 
 .cart{
-position:relative;
+
+    position:relative;
+
+    cursor:pointer;
+
 }
 
+
 .cart span{
-position:absolute;
-top:-10px;
-right:-10px;
-background:red;
-color:white;
-width:20px;
-height:20px;
-border-radius:50%;
-display:flex;
-justify-content:center;
-align-items:center;
-font-size:12px;
+
+    position:absolute;
+
+    top:-12px;
+    right:-12px;
+
+    background:red;
+
+    width:20px;
+    height:20px;
+
+    border-radius:50%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-size:12px;
+
 }
+
+
+#menu-btn{
+
+    display:none;
+
+    cursor:pointer;
+
+}
+
+
+
+/* =====================
+HERO
+===================== */
+
 
 .hero{
 
-height:80vh;
 
-display:flex;
+    min-height:85vh;
 
-justify-content:center;
+    display:flex;
 
-align-items:center;
+    justify-content:center;
+    align-items:center;
 
-text-align:center;
+    text-align:center;
 
-background:linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.5)),
-url('../img/hero.jpg') center/cover;
+    padding:20px;
 
-color:white;
+
+    background:
+
+    linear-gradient(
+    rgba(0,0,0,.55),
+    rgba(0,0,0,.55)
+    ),
+
+    url("imagens/hero.jpg")
+
+    center/cover;
+
+
+    color:white;
 
 }
+
+
+.texto{
+
+    animation:entrada 1s;
+
+}
+
 
 .hero h1{
-font-size:55px;
+
+    font-size:55px;
+
+    max-width:900px;
+
 }
+
+
 
 .hero p{
-margin:20px 0;
+
+    font-size:20px;
+
+    margin:20px 0;
+
 }
+
+
 
 .hero button{
-padding:15px 40px;
-border:none;
-background:#00bfff;
-color:white;
-font-size:18px;
-border-radius:30px;
-cursor:pointer;
+
+
+    padding:15px 45px;
+
+    border:none;
+
+    border-radius:30px;
+
+
+    background:#00bfff;
+
+    color:white;
+
+
+    font-size:18px;
+
+    cursor:pointer;
+
+
+    transition:.3s;
+
+
 }
 
-.pesquisa{
-padding:40px;
-text-align:center;
+
+
+.hero button:hover{
+
+    transform:scale(1.05);
+
+    background:#0099dd;
+
 }
+
+
+
+@keyframes entrada{
+
+
+from{
+
+opacity:0;
+
+transform:translateY(50px);
+
+}
+
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+
+}
+
+
+
+/* =====================
+PESQUISA
+===================== */
+
+
+.pesquisa{
+
+    padding:40px 8%;
+
+    text-align:center;
+
+}
+
+
 
 .pesquisa input{
 
-width:60%;
-padding:15px;
-border-radius:30px;
-border:1px solid #ddd;
+
+    width:70%;
+
+    padding:16px 25px;
+
+    border-radius:40px;
+
+    border:1px solid #ddd;
+
+
+    font-size:16px;
+
+
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+
 
 }
+
+
+
+.pesquisa input:focus{
+
+    outline:none;
+
+    border:2px solid #00bfff;
+
+}
+
+
+
+/* =====================
+PRODUTOS
+===================== */
+
 
 .produtos{
 
-display:grid;
 
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    padding:50px 8%;
 
-gap:30px;
 
-padding:50px 8%;
+    display:grid;
+
+    grid-template-columns:
+
+    repeat(auto-fit,minmax(250px,1fr));
+
+
+    gap:30px;
+
 
 }
+
+
 
 .card{
 
-background:white;
 
-padding:20px;
+    background:white;
 
-text-align:center;
 
-border-radius:15px;
+    border-radius:20px;
 
-box-shadow:0 10px 20px rgba(0,0,0,.1);
 
-transition:.3s;
+    padding:20px;
+
+
+    text-align:center;
+
+
+    overflow:hidden;
+
+
+    box-shadow:
+
+    0 10px 25px rgba(0,0,0,.1);
+
+
+    transition:.4s;
+
 
 }
+
+
 
 .card:hover{
-transform:translateY(-10px);
+
+
+    transform:translateY(-12px);
+
+
+    box-shadow:
+
+    0 25px 45px rgba(0,0,0,.18);
+
+
 }
+
+
 
 .card img{
 
-width:100%;
-height:220px;
-object-fit:cover;
+
+    width:100%;
+
+    height:230px;
+
+    object-fit:cover;
+
+    border-radius:15px;
+
+
+    transition:.4s;
+
 
 }
+
+
+
+.card:hover img{
+
+
+    transform:scale(1.05);
+
+
+}
+
+
+
+.card h3{
+
+
+    margin:15px 0;
+
+    font-size:22px;
+
+
+}
+
+
+
+.card p{
+
+
+    color:#00bfff;
+
+    font-size:20px;
+
+    font-weight:bold;
+
+
+}
+
+
 
 .card button{
 
-margin-top:15px;
 
-padding:12px 30px;
+    margin-top:15px;
 
-border:none;
+    padding:12px 30px;
 
-background:#00bfff;
 
-color:white;
+    border:none;
 
-border-radius:25px;
+    border-radius:30px;
 
-cursor:pointer;
+
+    background:#00bfff;
+
+
+    color:white;
+
+
+    cursor:pointer;
+
+
+    transition:.3s;
+
 
 }
 
-#menu-btn{
-display:none;
+
+
+.card button:hover{
+
+
+    background:#0f172a;
+
+
 }
+
+
+
+/* =====================
+RESPONSIVO
+===================== */
+
 
 @media(max-width:768px){
 
+
+header{
+
+padding:15px 5%;
+
+}
+
+
+
+.logo img{
+
+width:60px;
+
+height:60px;
+
+}
+
+
 nav{
 
-display:none;
 
 position:absolute;
 
-top:80px;
+top:90px;
 
 left:0;
 
+
 width:100%;
+
 
 background:#0f172a;
 
+
+display:none;
+
+
 }
+
+
+
+nav.active{
+
+display:block;
+
+}
+
+
 
 nav ul{
 
+
 flex-direction:column;
 
-padding:20px;
+padding:25px;
+
+text-align:center;
+
 
 }
+
+
 
 #menu-btn{
 
@@ -214,353 +606,975 @@ display:block;
 
 }
 
+
+
 .hero h1{
 
-font-size:34px;
+font-size:35px;
 
 }
+
+
+
+.hero p{
+
+font-size:16px;
+
+}
+
+
 
 .pesquisa input{
 
-width:90%;
+width:100%;
 
 }
 
+
+
+.produtos{
+
+padding:30px 5%;
+
 }
+
+
+
+}
+
 </style>
-
 <style>
-    html{
-    scroll-behavior:smooth;
-}
+    /* =====================
+SEÇÕES GERAIS
+===================== */
 
 .info{
-    padding:70px 8%;
-    background:#fff;
+
+    padding:80px 8%;
+    text-align:center;
+
 }
+
 
 .info h2{
-    text-align:center;
+
+    font-size:38px;
+    margin-bottom:25px;
     color:#0f172a;
-    font-size:35px;
-    margin-bottom:20px;
+
 }
+
 
 .info p{
-    max-width:900px;
-    margin:auto;
-    text-align:center;
-    line-height:1.8;
+
     color:#555;
+    line-height:1.7;
+
 }
+
+
+
+/* =====================
+PROMOÇÕES
+===================== */
+
 
 .promocoes{
-    background:#eef7ff;
+
+    background:
+
+    linear-gradient(
+    135deg,
+    #eef7ff,
+    #ffffff
+    );
+
 }
+
+
+
+.promocoes .card{
+
+    border-top:5px solid #00bfff;
+
+}
+
+
+
+.promocoes h2{
+
+    color:#00bfff;
+
+}
+
+
+
+.promocoes .card h2{
+
+    color:#00bfff;
+    margin:15px 0;
+
+}
+
+
+.promocoes del{
+
+    color:#999;
+
+}
+
+
+
+
+
+/* =====================
+CONTACTO
+===================== */
+
 
 .contacto{
-    background:#0f172a;
+
+    background:
+
+    linear-gradient(
+    135deg,
+    #0f172a,
+    #020617
+    );
+
     color:white;
+
 }
 
-.contacto h2,
-.contacto p{
+
+
+.contacto h2{
+
     color:white;
+
 }
 
-.contacto form{
-    max-width:600px;
-    margin:30px auto 0;
+
+.contacto>p{
+
+    color:#ddd;
+
+}
+
+
+
+
+
+/* =====================
+REDES SOCIAIS
+===================== */
+
+
+.redes{
+
+
+    margin:50px auto;
+
+
+    display:grid;
+
+
+    grid-template-columns:
+
+    repeat(auto-fit,minmax(250px,1fr));
+
+
+    gap:25px;
+
+
+    max-width:1100px;
+
+
+}
+
+
+
+
+.rede{
+
+
     display:flex;
-    flex-direction:column;
-    gap:15px;
-}
 
-.contacto input,
-.contacto textarea{
-    padding:15px;
-    border:none;
-    border-radius:10px;
-    font-size:16px;
-}
 
-.contacto button{
-    padding:15px;
-    border:none;
-    background:#00bfff;
+    align-items:center;
+
+
+    gap:20px;
+
+
+    padding:25px;
+
+
+    border-radius:20px;
+
+
     color:white;
-    border-radius:10px;
-    cursor:pointer;
-    font-size:18px;
+
+
+    text-decoration:none;
+
+
+    transition:.4s;
+
+
+    box-shadow:
+
+    0 15px 30px rgba(0,0,0,.25);
+
+
+}
+
+
+
+.rede:hover{
+
+
+    transform:
+
+    translateY(-10px);
+
+
+}
+
+
+
+.rede i{
+
+
+    width:65px;
+
+    height:65px;
+
+
+    border-radius:50%;
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    justify-content:center;
+
+
+    font-size:35px;
+
+
+    background:
+
+    rgba(255,255,255,.15);
+
+
+}
+
+
+
+
+.rede h3{
+
+    font-size:20px;
+
+    margin-bottom:5px;
+
+}
+
+
+
+.rede p{
+
+    color:white;
+
+}
+
+
+
+
+
+.whatsapp{
+
+
+background:#25D366;
+
+
+}
+
+
+
+.instagram{
+
+
+background:
+
+linear-gradient(
+
+45deg,
+
+#F58529,
+
+#DD2A7B,
+
+#8134AF,
+
+#515BD4
+
+);
+
+
+}
+
+
+
+.tiktok{
+
+
+background:#000;
+
+
+}
+
+
+
+.grupo{
+
+
+background:#128C7E;
+
+
+}
+
+
+
+
+
+
+
+/* =====================
+INFORMAÇÕES EXTRAS
+===================== */
+
+
+.info-extra{
+
+
+display:grid;
+
+
+grid-template-columns:
+
+repeat(auto-fit,minmax(220px,1fr));
+
+
+gap:25px;
+
+
+margin-top:60px;
+
+
+}
+
+
+
+
+.item{
+
+
+padding:30px;
+
+
+border-radius:20px;
+
+
+background:
+
+rgba(255,255,255,.08);
+
+
+backdrop-filter:blur(10px);
+
+
+transition:.4s;
+
+
+}
+
+
+
+.item:hover{
+
+
+transform:translateY(-10px);
+
+
+background:
+
+rgba(255,255,255,.15);
+
+
+}
+
+
+
+
+.item i{
+
+
+font-size:45px;
+
+
+color:#00bfff;
+
+
+margin-bottom:20px;
+
+
+}
+
+
+
+.item h3{
+
+
+margin-bottom:15px;
+
+
+color:white;
+
+
+}
+
+
+
+.item p{
+
+
+color:#ddd;
+
+
+}
+
+
+
+
+
+
+
+/* =====================
+FOOTER
+===================== */
+
+
+footer{
+
+
+background:#020617;
+
+
+padding:60px 20px;
+
+
+text-align:center;
+
+
+color:white;
+
+
+}
+
+
+
+footer h2{
+
+
+font-size:35px;
+
+
+color:#00bfff;
+
+
+margin-bottom:20px;
+
+
+}
+
+
+
+footer p{
+
+
+margin:10px;
+
+
+color:#ddd;
+
+
+}
+
+
+
+footer hr{
+
+
+max-width:600px;
+
+
+margin:30px auto;
+
+
+border:1px solid rgba(255,255,255,.2);
+
+
+}
+
+
+
+
+
+
+
+/* =====================
+SCROLLBAR
+===================== */
+
+
+::-webkit-scrollbar{
+
+
+width:10px;
+
+
+}
+
+
+
+::-webkit-scrollbar-thumb{
+
+
+background:#00bfff;
+
+
+border-radius:20px;
+
+
+}
+
+
+
+
+
+/* =====================
+MOBILE
+===================== */
+
+
+@media(max-width:768px){
+
+
+.info{
+
+padding:60px 5%;
+
+}
+
+
+
+.info h2{
+
+font-size:30px;
+
+}
+
+
+
+.rede{
+
+padding:20px;
+
+}
+
+
+
+.item{
+
+padding:25px;
+
+}
+
+
+footer h2{
+
+font-size:28px;
+
+}
+
+
+
 }
 </style>
 <style>
-    body{
+    /* =====================
+TÍTULO PRODUTOS
+===================== */
+
+
+.titulo-produtos{
+
+    text-align:center;
+
+    padding-top:60px;
+
     background:#f3f6fb;
+
 }
 
-/* Header */
-header{
-    backdrop-filter:blur(18px);
-    background:rgba(15,23,42,.95);
-    box-shadow:0 10px 30px rgba(0,0,0,.2);
-    z-index:1000;
-}
 
-nav a{
+
+.titulo-produtos h2{
+
+
+    font-size:45px;
+
+    font-weight:800;
+
+    color:#098fd8;
+
+
     position:relative;
-    font-weight:bold;
-    transition:.3s;
+
+    display:inline-block;
+
+
+    margin-bottom:15px;
+
+
 }
 
-nav a::after{
-    content:'';
-    position:absolute;
-    left:0;
-    bottom:-6px;
-    width:0%;
-    height:3px;
-    background:#00bfff;
-    transition:.4s;
+
+
+
+.titulo-produtos p{
+
+
+    margin-top:25px;
+
+
+    color:#64748b;
+
+
+    font-size:18px;
+
+
 }
 
-nav a:hover{
-    color:#00bfff;
+
+
+/* animação */
+
+
+.titulo-produtos h2{
+
+
+    animation:tituloEntrada 1s ease;
+
+
 }
 
-nav a:hover::after{
-    width:100%;
-}
 
-/* Hero */
 
-.hero{
-    position:relative;
-    overflow:hidden;
-}
+@keyframes tituloEntrada{
 
-.hero::before{
-    content:'';
-    position:absolute;
-    width:600px;
-    height:600px;
-    background:#00bfff;
-    border-radius:50%;
-    filter:blur(180px);
-    top:-200px;
-    right:-200px;
-    opacity:.2;
-}
-
-.texto{
-    animation:fadeUp 1s;
-}
-
-@keyframes fadeUp{
 
 from{
 
 opacity:0;
-transform:translateY(60px);
+
+transform:translateY(30px);
 
 }
+
 
 to{
 
 opacity:1;
+
 transform:translateY(0);
 
 }
 
-}
-
-.hero button{
-
-transition:.3s;
-
-box-shadow:0 10px 25px rgba(0,191,255,.4);
 
 }
 
-.hero button:hover{
 
-transform:translateY(-5px) scale(1.05);
 
-background:#0099dd;
+
+@media(max-width:768px){
+
+
+.titulo-produtos h2{
+
+
+font-size:32px;
+
 
 }
 
-/* Pesquisa */
 
-.pesquisa input{
+.titulo-produtos p{
+
+
+font-size:15px;
+
+
+}
+
+
+}
+</style>
+<style>
+    /* =====================
+CARRINHO
+===================== */
+
+
+.carrinho-box{
+
+position:fixed;
+
+right:-450px;
+
+top:0;
+
+width:380px;
+
+height:100vh;
+
+background:white;
+
+z-index:2000;
+
+padding:25px;
+
+box-shadow:-10px 0 30px rgba(0,0,0,.3);
 
 transition:.4s;
 
-box-shadow:0 10px 25px rgba(0,0,0,.08);
+overflow:auto;
 
 }
 
-.pesquisa input:focus{
 
-outline:none;
 
-border:2px solid #00bfff;
+.carrinho-box.active{
 
-transform:scale(1.02);
+right:0;
 
 }
 
-/* Cards */
 
-.card{
 
-overflow:hidden;
+.fundo{
 
-transition:.4s;
+position:fixed;
 
-}
+inset:0;
 
-.card:hover{
+background:rgba(0,0,0,.5);
 
-transform:translateY(-15px);
+z-index:1500;
 
-box-shadow:0 25px 45px rgba(0,0,0,.15);
+display:none;
 
 }
 
-.card img{
 
-transition:.5s;
 
-}
+.fundo.active{
 
-.card:hover img{
-
-transform:scale(1.08);
+display:block;
 
 }
 
-.card h3{
 
-margin:15px 0;
 
-font-size:22px;
 
-}
+.carrinho-header{
 
-.card p{
+display:flex;
 
-font-size:20px;
+justify-content:space-between;
 
-font-weight:bold;
-
-color:#00bfff;
-
-}
-
-.card button{
-
-transition:.3s;
-
-}
-
-.card button:hover{
-
-background:#0f172a;
-
-}
-
-/* Scrollbar */
-
-::-webkit-scrollbar{
-
-width:10px;
-
-}
-
-::-webkit-scrollbar-thumb{
-
-background:#00bfff;
-
-border-radius:20px;
-
-}
-
-/* Promoções */
-
-.promocoes{
-
-background:linear-gradient(135deg,#eef7ff,#ffffff);
-
-}
-
-.promocoes h2{
+align-items:center;
 
 margin-bottom:30px;
 
 }
 
-/* Contacto */
 
-.contacto{
 
-background:linear-gradient(135deg,#0f172a,#111827);
-
-}
-
-.contacto input,
-.contacto textarea{
-
-background:#ffffff;
-
-transition:.3s;
-
-}
-
-.contacto input:focus,
-.contacto textarea:focus{
-
-outline:none;
-
-box-shadow:0 0 20px rgba(0,191,255,.5);
-
-}
-
-.contacto button{
-
-transition:.3s;
-
-}
-
-.contacto button:hover{
-
-background:white;
+.carrinho-header h2{
 
 color:#0f172a;
 
 }
+
+
+
+.carrinho-header i{
+
+font-size:25px;
+
+cursor:pointer;
+
+}
+
+
+
+.produto-carrinho{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+padding:15px 0;
+
+border-bottom:1px solid #ddd;
+
+}
+
+
+
+.produto-carrinho h4{
+
+font-size:16px;
+
+}
+
+
+
+.produto-carrinho span{
+
+color:#00bfff;
+
+font-weight:bold;
+
+}
+
+
+
+.remover{
+
+color:red;
+
+cursor:pointer;
+
+}
+
+
+
+.total{
+
+margin-top:30px;
+
+font-size:20px;
+
+}
+
+
+
+.finalizar{
+
+width:100%;
+
+margin-top:25px;
+
+padding:15px;
+
+border:none;
+
+border-radius:30px;
+
+background:#25D366;
+
+color:white;
+
+font-size:17px;
+
+cursor:pointer;
+
+}
+
+
+
+.finalizar:hover{
+
+background:#128C7E;
+
+}
+
+
+/* =====================
+CARRINHO MOBILE
+===================== */
+
+@media(max-width:500px){
+
+.carrinho-box{
+
+    width:90%;
+    right:-100%;
+
+    border-radius:20px 0 0 20px;
+
+}
+
+
+.carrinho-box.active{
+
+    right:0;
+
+}
+.carrinho-box{
+
+transition:0.5s ease;
+
+}
+
+}
 </style>
 
-<link rel="stylesheet" href="css/style.css">
-
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-
 </head>
-
 <body>
+
+
+<!-- =====================
+HEADER
+===================== -->
 
 <header>
 
+
 <div class="logo">
-    <a href="#">
-        <img src="imagens/logo/logo.jpeg" alt="Javen Logo">
-    </a>
+
+<a href="#inicio">
+
+<img src="imagens/logo/logo1.jpeg" alt="Javen Store">
+
+</a>
+
 </div>
 
-<nav>
 
-<ul id="menu">
+
+<nav id="nav">
+
+<ul>
 
 <li><a href="#inicio">Início</a></li>
 
@@ -574,215 +1588,1365 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 
 </nav>
 
+
+
 <div class="icons">
 
-<i class="fas fa-search"></i>
 
-<div class="cart">
+
+
+<div class="cart" onclick="abrirCarrinho()">
+
 <i class="fas fa-shopping-cart"></i>
+
 <span id="contador">0</span>
+
 </div>
+
+
 
 <div id="menu-btn">
+
 <i class="fas fa-bars"></i>
-</div>
 
 </div>
+
+
+</div>
+
 
 </header>
 
-<section class="hero">
+
+
+
+
+<!-- =====================
+HERO
+===================== -->
+
+
+<section class="hero" id="inicio">
+
 
 <div class="texto">
 
-<h1>Carregadores e Acessórios Originais</h1>
 
-<p>Entrega rápida em todo país.</p>
+<h1>
 
-<button>Comprar Agora</button>
+Acessórios Tecnológicos Originais
+
+</h1>
+
+
+<p>
+
+Qualidade, confiança e entrega rápida em toda Angola.
+
+</p>
+
+
+<button>
+
+Comprar Agora
+
+</button>
+
 
 </div>
 
+
 </section>
+
+
+
+<section class="titulo-produtos">
+
+<h2>
+  Produtos
+</h2>
+
+<p>
+Confira os nossos acessórios tecnológicos disponíveis
+</p>
+
+</section>
+
+
+
+<!-- =====================
+PESQUISA
+===================== -->
+
 
 <section class="pesquisa">
 
-<input
+
+<input 
+
 type="text"
+
 id="buscar"
-placeholder="Pesquisar produtos...">
+
+placeholder="🔎 Pesquisar produtos...">
+
 
 </section>
+
+
+
+
+
+
+
+
+<!-- =====================
+PRODUTOS
+===================== -->
+
 
 <section class="produtos" id="produtos">
 
+
+
 <div class="card">
 
-<img src="img/produtos/carregador.jpg">
 
-<h3>Carregador Tipo-C</h3>
+<img src="imagens/produtos/cabo.jpg">
 
-<p>12.000 Kz</p>
 
-<button onclick="addCarrinho()">
+<h3>Cabo USB Tipo-C</h3>
+
+
+<p>4.500 Kz</p>
+
+
+<button onclick="addCarrinho('Cabo USB Tipo-C',4500)">
 Adicionar
 </button>
 
 </div>
 
-<div class="card">
 
-<img src="img/produtos/fone.jpg">
 
-<h3>Fone Bluetooth</h3>
 
-<p>18.000 Kz</p>
 
-<button onclick="addCarrinho()">
-Adicionar
-</button>
-
-</div>
 
 <div class="card">
 
-<img src="img/produtos/powerbank.jpg">
 
-<h3>Power Bank</h3>
 
-<p>25.000 Kz</p>
+<img src="imagens/produtos/airpods.jpg">
 
-<button onclick="addCarrinho()">
+
+<h3>AirPods Pro</h3>
+
+
+<p>35.000 Kz</p>
+
+
+<button onclick="addCarrinho('AirPods Pro',4500)">
 Adicionar
 </button>
 
+
+
+
 </div>
+
+
+
+
+
+
+<div class="card">
+
+
+<img src="imagens/produtos/carregador-iphone.jpg">
+
+
+<h3>Carregador iPhone 20W</h3>
+
+
+<p>15.000 Kz</p>
+
+
+<button onclick="addCarrinho('Carregador iPhone 20W',4500)">
+
+Adicionar
+
+</button>
+
+
+</div>
+
+
+
+
+
+
+<div class="card">
+
+
+<img src="imagens/produtos/smartwatch.jpg">
+
+
+<h3>Smart Watch</h3>
+
+
+<p>45.000 Kz</p>
+
+
+<button onclick="addCarrinho('Smart Watch',4500)">
+
+Adicionar
+
+</button>
+
+
+</div>
+
+
+
+
+
+
+<div class="card">
+
+
+<img src="imagens/produtos/caixa.jpg">
+
+
+<h3>Coluna Bluetooth</h3>
+
+
+<p>28.000 Kz</p>
+
+
+<button onclick="addCarrinho('Coluna Bluetooth',4500)">
+
+Adicionar
+
+</button>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="card">
+
+
+<img src="imagens/produtos/capa.jpg">
+
+
+<h3>Capa Premium</h3>
+
+
+<p>6.000 Kz</p>
+
+
+<button onclick="addCarrinho('Capa Premium',4500)">
+
+Adicionar
+
+</button>
+
+
+</div>
+
+
 
 </section>
+
+
+
+
+
+
+
+
+
+<!-- =====================
+PROMOÇÕES
+===================== -->
+
 
 <section class="info promocoes" id="promocoes">
 
-<h2>🔥 Promoções</h2>
+
+<h2>
+
+🔥 Promoções da Semana
+
+</h2>
+
+
+
+<div class="produtos">
+
+
+
+
+
+<div class="card">
+
+<h3>🎧 Fone Bluetooth</h3>
+
 
 <p>
-Aproveite as nossas promoções exclusivas em carregadores,
-power banks, fones Bluetooth e muitos outros acessórios.
-Descontos até 30% durante esta semana.
+
+<del>20.000 Kz</del>
+
 </p>
+
+
+<h2>
+
+18.000 Kz
+
+</h2>
+
+
+<p>
+
+Economize 2.000 Kz
+
+</p>
+
+
+</div>
+
+
+
+
+
+
+<div class="card">
+
+<h3>🔋 Power Bank</h3>
+
+
+<p>
+
+<del>30.000 Kz</del>
+
+</p>
+
+
+<h2>
+
+25.000 Kz
+
+</h2>
+
+
+<p>
+
+Oferta limitada
+
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="card">
+
+<h3>🔌 Carregador Tipo-C</h3>
+
+
+<p>
+
+<del>15.000 Kz</del>
+
+</p>
+
+
+<h2>
+
+12.000 Kz
+
+</h2>
+
+
+<p>
+
+Últimas unidades
+
+</p>
+
+
+</div>
+
+
+
+</div>
+
 
 </section>
 
-<section class="hero" id="inicio"></section>
 
-<section class="produtos" id="produtos"></section>
+
+
+
+
+
+
+<!-- =====================
+CONTACTO
+===================== -->
+
 
 <section class="info contacto" id="contacto">
 
-<h2>📞 Contacto</h2>
+
+<h2>
+
+📞 Contacte-nos
+
+</h2>
+
+
 
 <p>
-Entre em contacto connosco para encomendas ou informações.
+
+Faça a sua encomenda ou tire dúvidas através das nossas redes.
+
 </p>
 
-<form>
 
-<input type="text" placeholder="Nome">
 
-<input type="email" placeholder="Email">
 
-<textarea rows="5" placeholder="Escreva a sua mensagem"></textarea>
 
-<button type="submit">
-Enviar Mensagem
-</button>
+<div class="redes">
 
-</form>
+
+
+
+
+<a href="https://wa.me/244976173835"
+
+class="rede whatsapp"
+
+target="_blank">
+
+
+<i class="fab fa-whatsapp"></i>
+
+
+<div>
+
+<h3>
+
+WhatsApp
+
+</h3>
+
+
+<p>
+
+Fale connosco
+
+</p>
+
+
+</div>
+
+
+</a>
+
+
+
+
+
+
+
+
+<a href="https://www.instagram.com/javen.store1"
+
+class="rede instagram"
+
+target="_blank">
+
+
+<i class="fab fa-instagram"></i>
+
+
+<div>
+
+<h3>
+
+Instagram
+
+</h3>
+
+
+<p>
+
+@javen.store1
+
+</p>
+
+
+</div>
+
+
+</a>
+
+
+
+
+
+
+
+<a href="#"
+
+class="rede tiktok">
+
+
+<i class="fab fa-tiktok"></i>
+
+
+<div>
+
+<h3>
+
+TikTok
+
+</h3>
+
+
+<p>
+
+@javenstore
+
+</p>
+
+
+</div>
+
+
+</a>
+
+
+
+
+
+
+
+<a href="https://chat.whatsapp.com/Fr5XWIffvC6IwWw6ezyL7W?s=cl&p=a&mlu=0"
+
+class="rede grupo">
+
+
+<i class="fas fa-users"></i>
+
+
+<div>
+
+<h3>
+
+Grupo WhatsApp
+
+</h3>
+
+
+<p>
+
+Promoções e novidades
+
+</p>
+
+
+</div>
+
+
+</a>
+
+
+
+
+</div>
+
+
+
+
+
+
+
+<div class="info-extra">
+
+
+
+<div class="item">
+
+<i class="fas fa-map-marker-alt"></i>
+
+<h3>
+
+Localização
+
+</h3>
+
+
+<p>
+
+Luanda - Angola
+
+</p>
+
+</div>
+
+
+
+
+
+
+
+<div class="item">
+
+<i class="fas fa-clock"></i>
+
+
+<h3>
+
+Horário
+
+</h3>
+
+
+<p>
+
+Segunda - Sábado
+
+</p>
+
+
+<p>
+
+08:00 - 18:00
+
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="item">
+
+
+<i class="fas fa-truck"></i>
+
+
+<h3>
+
+Entrega
+
+</h3>
+
+
+<p>
+
+Toda Angola
+
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="item">
+
+
+<i class="fas fa-shield-alt"></i>
+
+
+<h3>
+
+Garantia
+
+</h3>
+
+
+<p>
+
+Produtos originais
+
+</p>
+
+
+</div>
+
+
+
+
+</div>
+
+
 
 </section>
 
-<script src="js/script.js"></script>
+
+
+
+
+<!-- CARRINHO -->
+
+<div class="carrinho-box" id="carrinho">
+
+
+<div class="carrinho-header">
+
+<h2>
+🛒 Meu Carrinho
+</h2>
+
+<i class="fas fa-times" onclick="fecharCarrinho()"></i>
+
+</div>
+
+
+<div id="listaCarrinho">
+
+<p>
+Seu carrinho está vazio.
+</p>
+
+</div>
+
+
+
+<div class="total">
+
+<h3>
+Total:
+<span id="total">0</span> Kz
+</h3>
+
+</div>
+
+
+
+<button class="finalizar" onclick="finalizarCompra()">
+
+Finalizar Compra WhatsApp
+
+</button>
+
+
+</div>
+
+
+<div class="fundo" id="fundo" onclick="fecharCarrinho()"></div>
+
+
+
+<!-- =====================
+FOOTER
+===================== -->
+
+
+<footer>
+
+
+<h2>
+
+Javen Store
+
+</h2>
+
+
+
+<p>
+
+A melhor loja de acessórios tecnológicos de Angola.
+
+</p>
+
+
+
+<p>
+
+✔ Produtos Originais
+
+</p>
+
+
+
+<p>
+
+✔ Entrega Rápida
+
+</p>
+
+
+
+<p>
+
+✔ Pagamento Seguro
+
+</p>
+
+
+
+<hr>
+
+
+<p>
+        <a href="https://www.instagram.com/a.roy_stor3/?utm_source=ig_web_button_share_sheet" target="_blank" style="color:#00bfff;; text-decoration:none; font-weight:bold;">
+            A.roy_Store
+        </a>
+
+        © 2026 desenvolvido por 
+
+        <a href="https://alexandreamaral27.github.io/Project-Portifolio/" style="color:#00bfff;; text-decoration:none; font-weight:bold;">
+            Alexandre Amaral
+        </a>
+
+        Todos os direitos reservados.
+    </p>
+
+</footer>
 <script>
 
-let contador=0;
+/* =====================
+MENU MOBILE
+===================== */
 
-function addCarrinho(){
+const menuBtn = document.getElementById("menu-btn");
+const nav = document.getElementById("nav");
 
-contador++;
 
-document.getElementById("contador").innerHTML=contador;
+menuBtn.onclick = ()=>{
 
-const cart=document.querySelector(".cart");
+    nav.classList.toggle("active");
 
-cart.animate([
+};
 
-{transform:"scale(1)"},
 
-{transform:"scale(1.3)"},
 
-{transform:"scale(1)"}
 
-],{
+/* =====================
+CARRINHO
+===================== */
 
-duration:300
 
-});
+let carrinho = [];
+
+
+
+function addCarrinho(nome, preco){
+
+
+    let produtoExistente = carrinho.find(
+        produto => produto.nome === nome
+    );
+
+
+    if(produtoExistente){
+
+        produtoExistente.quantidade++;
+
+    }else{
+
+        carrinho.push({
+
+            nome:nome,
+
+            preco:preco,
+
+            quantidade:1
+
+        });
+
+    }
+
+
+    // Atualiza carrinho sem abrir automaticamente
+    mostrarCarrinho();
+
+
+
+    // Animação no ícone do carrinho
+    const cart = document.querySelector(".cart");
+
+
+    cart.animate(
+
+    [
+
+        {
+            transform:"scale(1)"
+        },
+
+        {
+            transform:"scale(1.3)"
+        },
+
+        {
+            transform:"scale(1)"
+        }
+
+    ],
+
+    {
+
+        duration:400
+
+    }
+
+    );
 
 }
 
-/* Pesquisa */
 
-const pesquisa=document.getElementById("buscar");
+
+
+
+
+function mostrarCarrinho(){
+
+
+let lista = document.getElementById("listaCarrinho");
+
+
+lista.innerHTML = "";
+
+
+let total = 0;
+
+let quantidadeTotal = 0;
+
+
+
+if(carrinho.length === 0){
+
+
+lista.innerHTML = `
+
+<p>
+Seu carrinho está vazio.
+</p>
+
+`;
+
+}
+
+
+
+carrinho.forEach((produto,index)=>{
+
+
+let subtotal = produto.preco * produto.quantidade;
+
+
+total += subtotal;
+
+
+quantidadeTotal += produto.quantidade;
+
+
+
+lista.innerHTML += `
+
+
+<div class="produto-carrinho">
+
+
+<div>
+
+
+<h4>
+${produto.nome}
+</h4>
+
+
+<p>
+Quantidade: ${produto.quantidade}
+</p>
+
+
+<span>
+${subtotal.toLocaleString('pt-PT')} Kz
+</span>
+
+
+</div>
+
+
+
+<i 
+
+class="fas fa-trash remover"
+
+onclick="removerProduto(${index})">
+
+</i>
+
+
+</div>
+
+
+`;
+
+
+});
+
+
+
+
+
+document.getElementById("total").innerHTML =
+
+total.toLocaleString('pt-PT');
+
+
+
+
+document.getElementById("contador").innerHTML =
+
+quantidadeTotal;
+
+
+
+}
+
+
+
+
+
+
+
+function removerProduto(index){
+
+
+carrinho.splice(index,1);
+
+
+mostrarCarrinho();
+
+
+}
+
+
+
+
+
+
+
+function abrirCarrinho(){
+
+
+document.getElementById("carrinho")
+
+.classList.add("active");
+
+
+
+document.getElementById("fundo")
+
+.classList.add("active");
+
+
+}
+
+
+
+
+
+
+
+function fecharCarrinho(){
+
+
+document.getElementById("carrinho")
+
+.classList.remove("active");
+
+
+
+document.getElementById("fundo")
+
+.classList.remove("active");
+
+
+}
+
+
+
+
+
+
+
+
+/* =====================
+FINALIZAR WHATSAPP
+===================== */
+
+
+function finalizarCompra(){
+
+
+
+if(carrinho.length === 0){
+
+
+alert("O carrinho está vazio!");
+
+return;
+
+
+}
+
+
+
+let mensagem = 
+
+"🛒 *NOVA ENCOMENDA JAVEN STORE*%0A%0A";
+
+
+
+let total = 0;
+
+
+
+carrinho.forEach(produto=>{
+
+
+let subtotal = produto.preco * produto.quantidade;
+
+
+
+total += subtotal;
+
+
+
+
+mensagem +=
+
+`📦 Produto: ${produto.nome}%0A`+
+
+`🔢 Quantidade: ${produto.quantidade}%0A`+
+
+`💰 Preço: ${produto.preco.toLocaleString('pt-PT')} Kz%0A`+
+
+`💵 Subtotal: ${subtotal.toLocaleString('pt-PT')} Kz%0A%0A`;
+
+
+
+});
+
+
+
+
+mensagem +=
+
+"================%0A"+
+
+`💰 TOTAL: ${total.toLocaleString('pt-PT')} Kz`;
+
+
+
+
+
+let numero = "244976173835";
+
+
+
+window.open(
+
+"https://wa.me/"+numero+"?text="+mensagem,
+
+"_blank"
+
+);
+
+
+
+}
+
+
+
+
+
+
+
+
+/* =====================
+PESQUISA PRODUTOS
+===================== */
+
+
+const pesquisa = document.getElementById("buscar");
+
+
 
 pesquisa.addEventListener("keyup",()=>{
 
-const texto=pesquisa.value.toLowerCase();
 
-const cards=document.querySelectorAll(".card");
+let texto = pesquisa.value.toLowerCase();
 
-cards.forEach(card=>{
 
-const nome=card.querySelector("h3").innerText.toLowerCase();
 
-card.style.display=nome.includes(texto)?"block":"none";
+const produtos = document.querySelectorAll(".card");
+
+
+
+produtos.forEach(card=>{
+
+
+let nome = card.querySelector("h3");
+
+
+
+if(nome){
+
+
+nome = nome.innerText.toLowerCase();
+
+
+
+if(nome.includes(texto)){
+
+
+card.style.display="block";
+
+
+}
+
+else{
+
+
+card.style.display="none";
+
+
+}
+
+
+}
+
 
 });
 
+
 });
 
-/* Revelação ao descer */
 
-const elementos=document.querySelectorAll(".card,.info");
 
-const observer=new IntersectionObserver((entries)=>{
+
+
+
+
+
+/* =====================
+ANIMAÇÃO SCROLL
+===================== */
+
+
+const elementos = document.querySelectorAll(
+
+".card,.info,.item,.rede"
+
+);
+
+
+
+const observer = new IntersectionObserver((entries)=>{
+
 
 entries.forEach(entry=>{
 
+
 if(entry.isIntersecting){
+
 
 entry.target.style.opacity="1";
 
 entry.target.style.transform="translateY(0)";
 
+
 }
 
-});
 
 });
 
-elementos.forEach(el=>{
-
-el.style.opacity="0";
-
-el.style.transform="translateY(50px)";
-
-el.style.transition=".8s";
-
-observer.observe(el);
 
 });
+
+
+
+
+
+elementos.forEach(elemento=>{
+
+
+elemento.style.opacity="0";
+
+
+elemento.style.transform="translateY(50px)";
+
+
+elemento.style.transition="0.8s";
+
+
+
+observer.observe(elemento);
+
+
+});
+
+
+
+
+
+
+
+
+/* =====================
+BOTÃO COMPRAR AGORA
+===================== */
+
+
+const comprar = document.querySelector(".hero button");
+
+
+
+comprar.onclick = ()=>{
+
+
+document.querySelector("#produtos")
+
+.scrollIntoView({
+
+behavior:"smooth"
+
+});
+
+
+};
+
+
+
 
 </script>
-
-
-</body>
-</html>
+<body>
