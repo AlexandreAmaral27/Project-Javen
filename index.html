@@ -643,6 +643,340 @@ padding:30px 5%;
 }
 
 </style>
+
+
+<style>
+    /* =====================
+CARRINHO
+===================== */
+
+
+.carrinho-box{
+
+position:fixed;
+
+right:-450px;
+
+top:0;
+
+width:380px;
+
+height:100vh;
+
+background:white;
+
+z-index:2000;
+
+padding:25px;
+
+box-shadow:-10px 0 30px rgba(0,0,0,.3);
+
+transition:.4s;
+
+overflow:auto;
+
+}
+
+
+
+.carrinho-box.active{
+
+right:0;
+
+}
+
+
+
+.fundo{
+
+position:fixed;
+
+inset:0;
+
+background:rgba(0,0,0,.5);
+
+z-index:1500;
+
+display:none;
+
+}
+
+
+
+.fundo.active{
+
+display:block;
+
+}
+
+
+
+
+.carrinho-header{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+margin-bottom:30px;
+
+}
+
+
+
+.carrinho-header h2{
+
+color:#0f172a;
+
+}
+
+
+
+.carrinho-header i{
+
+font-size:25px;
+
+cursor:pointer;
+
+}
+
+
+
+.produto-carrinho{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+padding:15px 0;
+
+border-bottom:1px solid #ddd;
+
+}
+
+
+
+.produto-carrinho h4{
+
+font-size:16px;
+
+}
+
+
+
+.produto-carrinho span{
+
+color:#00bfff;
+
+font-weight:bold;
+
+}
+
+
+
+.remover{
+
+color:red;
+
+cursor:pointer;
+
+}
+
+
+
+.total{
+
+margin-top:30px;
+
+font-size:20px;
+
+}
+
+
+
+.finalizar{
+
+width:100%;
+
+margin-top:25px;
+
+padding:15px;
+
+border:none;
+
+border-radius:30px;
+
+background:#25D366;
+
+color:white;
+
+font-size:17px;
+
+cursor:pointer;
+
+}
+
+
+
+.finalizar:hover{
+
+background:#128C7E;
+
+}
+
+
+/* =====================
+CARRINHO MOBILE
+===================== */
+
+@media(max-width:500px){
+
+.carrinho-box{
+
+    width:90%;
+    right:-100%;
+
+    border-radius:20px 0 0 20px;
+
+}
+
+
+.carrinho-box.active{
+
+    right:0;
+
+}
+.carrinho-box{
+
+transition:0.5s ease;
+
+}
+
+}
+</style>
+<style>
+    /* =====================
+TÍTULO PRODUTOS
+===================== */
+
+
+.titulo-produtos{
+
+    text-align:center;
+
+    padding-top:60px;
+
+    background:#f3f6fb;
+
+}
+
+
+
+.titulo-produtos h2{
+
+
+    font-size:45px;
+
+    font-weight:800;
+
+    color:#098fd8;
+
+
+    position:relative;
+
+    display:inline-block;
+
+
+    margin-bottom:15px;
+
+
+}
+
+
+
+
+.titulo-produtos p{
+
+
+    margin-top:25px;
+
+
+    color:#64748b;
+
+
+    font-size:18px;
+
+
+}
+
+
+
+/* animação */
+
+
+.titulo-produtos h2{
+
+
+    animation:tituloEntrada 1s ease;
+
+
+}
+
+
+
+@keyframes tituloEntrada{
+
+
+from{
+
+opacity:0;
+
+transform:translateY(30px);
+
+}
+
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+
+}
+
+
+
+
+@media(max-width:768px){
+
+
+.titulo-produtos h2{
+
+
+font-size:32px;
+
+
+}
+
+
+.titulo-produtos p{
+
+
+font-size:15px;
+
+
+}
+
+
+}
+</style>
 <style>
     /* =====================
 SEÇÕES GERAIS
@@ -769,130 +1103,123 @@ CONTACTO
 REDES SOCIAIS
 ===================== */
 
-
+/*=========================
+  REDES SOCIAIS CIRCULARES
+=========================*/
 .redes{
-
-
-    margin:50px auto;
-
-
-    display:grid;
-
-
-    grid-template-columns:
-
-    repeat(auto-fit,minmax(250px,1fr));
-
-
+    display:flex;
+    justify-content:center;
+    align-items:center;
     gap:25px;
-
-
-    max-width:1100px;
-
-
+    flex-wrap:wrap;
 }
-
-
-
 
 .rede{
-
-
-    display:flex;
-
-
-    align-items:center;
-
-
-    gap:20px;
-
-
-    padding:25px;
-
-
-    border-radius:20px;
-
-
-    color:white;
-
-
-    text-decoration:none;
-
-
-    transition:.4s;
-
-
-    box-shadow:
-
-    0 15px 30px rgba(0,0,0,.25);
-
-
-}
-
-
-
-.rede:hover{
-
-
-    transform:
-
-    translateY(-10px);
-
-
-}
-
-
-
-.rede i{
-
-
-    width:65px;
-
-    height:65px;
-
+    width:70px;
+    height:70px;
 
     border-radius:50%;
 
-
     display:flex;
-
-
+    justify-content:center;
     align-items:center;
 
+    text-decoration:none;
 
+    background:#111;
+
+    transition:.3s;
+}
+
+.rede i{
+    font-size:30px;
+}
+
+.whatsapp{
+    background:#25D366;
+}
+
+.instagram{
+    background:linear-gradient(45deg,#833AB4,#FD1D1D,#FCAF45);
+}
+
+.tiktok{
+    background:#000;
+}
+
+.grupo{
+    background:#128C7E;
+}
+
+.rede:hover{
+    transform:translateY(-8px) scale(1.1);
+}
+.redes{
+    display:flex;
     justify-content:center;
+    align-items:center;
+    gap:25px;
+    flex-wrap:wrap;
+    margin:60px auto;
+}
 
+.rede{
+    width:75px;
+    height:75px;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-decoration:none;
+    transition:.35s;
+}
 
-    font-size:35px;
+.rede i{
+    font-size:32px;
+    color:#fff;
+}
 
+.whatsapp{
+    background:#25D366;
+}
 
-    background:
+.instagram{
+    background:linear-gradient(45deg,#F58529,#DD2A7B,#8134AF,#515BD4);
+}
 
-    rgba(255,255,255,.15);
+.tiktok{
+    background:#000;
+}
 
-
+.grupo{
+    background:#128C7E;
 }
 
 
 
+.rede:hover::before{
+    transform:scale(1);
+}
 
-.rede h3{
-
-    font-size:20px;
-
-    margin-bottom:5px;
-
+.rede:hover{
+    transform:translateY(-8px) scale(1.08);
+    box-shadow:0 0 25px rgba(0, 191, 255, 0.341);
 }
 
 
 
-.rede p{
+@media(max-width:768px){
 
-    color:white;
+    .rede{
+        width:60px;
+        height:60px;
+    }
+
+    .rede i{
+        font-size:26px;
+    }
 
 }
-
-
 
 
 
@@ -1137,35 +1464,6 @@ border:1px solid rgba(255,255,255,.2);
 
 
 
-/* =====================
-SCROLLBAR
-===================== */
-
-
-::-webkit-scrollbar{
-
-
-width:10px;
-
-
-}
-
-
-
-::-webkit-scrollbar-thumb{
-
-
-background:#00bfff;
-
-
-border-radius:20px;
-
-
-}
-
-
-
-
 
 /* =====================
 MOBILE
@@ -1216,339 +1514,6 @@ font-size:28px;
 
 }
 </style>
-<style>
-    /* =====================
-TÍTULO PRODUTOS
-===================== */
-
-
-.titulo-produtos{
-
-    text-align:center;
-
-    padding-top:60px;
-
-    background:#f3f6fb;
-
-}
-
-
-
-.titulo-produtos h2{
-
-
-    font-size:45px;
-
-    font-weight:800;
-
-    color:#098fd8;
-
-
-    position:relative;
-
-    display:inline-block;
-
-
-    margin-bottom:15px;
-
-
-}
-
-
-
-
-.titulo-produtos p{
-
-
-    margin-top:25px;
-
-
-    color:#64748b;
-
-
-    font-size:18px;
-
-
-}
-
-
-
-/* animação */
-
-
-.titulo-produtos h2{
-
-
-    animation:tituloEntrada 1s ease;
-
-
-}
-
-
-
-@keyframes tituloEntrada{
-
-
-from{
-
-opacity:0;
-
-transform:translateY(30px);
-
-}
-
-
-to{
-
-opacity:1;
-
-transform:translateY(0);
-
-}
-
-
-}
-
-
-
-
-@media(max-width:768px){
-
-
-.titulo-produtos h2{
-
-
-font-size:32px;
-
-
-}
-
-
-.titulo-produtos p{
-
-
-font-size:15px;
-
-
-}
-
-
-}
-</style>
-<style>
-    /* =====================
-CARRINHO
-===================== */
-
-
-.carrinho-box{
-
-position:fixed;
-
-right:-450px;
-
-top:0;
-
-width:380px;
-
-height:100vh;
-
-background:white;
-
-z-index:2000;
-
-padding:25px;
-
-box-shadow:-10px 0 30px rgba(0,0,0,.3);
-
-transition:.4s;
-
-overflow:auto;
-
-}
-
-
-
-.carrinho-box.active{
-
-right:0;
-
-}
-
-
-
-.fundo{
-
-position:fixed;
-
-inset:0;
-
-background:rgba(0,0,0,.5);
-
-z-index:1500;
-
-display:none;
-
-}
-
-
-
-.fundo.active{
-
-display:block;
-
-}
-
-
-
-
-.carrinho-header{
-
-display:flex;
-
-justify-content:space-between;
-
-align-items:center;
-
-margin-bottom:30px;
-
-}
-
-
-
-.carrinho-header h2{
-
-color:#0f172a;
-
-}
-
-
-
-.carrinho-header i{
-
-font-size:25px;
-
-cursor:pointer;
-
-}
-
-
-
-.produto-carrinho{
-
-display:flex;
-
-justify-content:space-between;
-
-align-items:center;
-
-padding:15px 0;
-
-border-bottom:1px solid #ddd;
-
-}
-
-
-
-.produto-carrinho h4{
-
-font-size:16px;
-
-}
-
-
-
-.produto-carrinho span{
-
-color:#00bfff;
-
-font-weight:bold;
-
-}
-
-
-
-.remover{
-
-color:red;
-
-cursor:pointer;
-
-}
-
-
-
-.total{
-
-margin-top:30px;
-
-font-size:20px;
-
-}
-
-
-
-.finalizar{
-
-width:100%;
-
-margin-top:25px;
-
-padding:15px;
-
-border:none;
-
-border-radius:30px;
-
-background:#25D366;
-
-color:white;
-
-font-size:17px;
-
-cursor:pointer;
-
-}
-
-
-
-.finalizar:hover{
-
-background:#128C7E;
-
-}
-
-
-/* =====================
-CARRINHO MOBILE
-===================== */
-
-@media(max-width:500px){
-
-.carrinho-box{
-
-    width:90%;
-    right:-100%;
-
-    border-radius:20px 0 0 20px;
-
-}
-
-
-.carrinho-box.active{
-
-    right:0;
-
-}
-.carrinho-box{
-
-transition:0.5s ease;
-
-}
-
-}
-</style>
-
 </head>
 <body>
 
@@ -2030,156 +1995,23 @@ Faça a sua encomenda ou tire dúvidas através das nossas redes.
 
 <div class="redes">
 
+    <a href="https://wa.me/244976173835" class="rede whatsapp" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
+    <a href="https://www.instagram.com/javen.store1" class="rede instagram" target="_blank">
+        <i class="fab fa-instagram"></i>
+    </a>
 
+    <a href="#" class="rede tiktok">
+        <i class="fab fa-tiktok"></i>
+    </a>
 
-
-<a href="https://wa.me/244976173835"
-
-class="rede whatsapp"
-
-target="_blank">
-
-
-<i class="fab fa-whatsapp"></i>
-
-
-<div>
-
-<h3>
-
-WhatsApp
-
-</h3>
-
-
-<p>
-
-Fale connosco
-
-</p>
-
+    <a href="https://chat.whatsapp.com/Fr5XWIffvC6IwWw6ezyL7W?s=cl&p=a&mlu=0" target="_blank" class="rede grupo">
+        <i class="fas fa-users"></i>
+    </a>
 
 </div>
-
-
-</a>
-
-
-
-
-
-
-
-
-<a href="https://www.instagram.com/javen.store1"
-
-class="rede instagram"
-
-target="_blank">
-
-
-<i class="fab fa-instagram"></i>
-
-
-<div>
-
-<h3>
-
-Instagram
-
-</h3>
-
-
-<p>
-
-@javen.store1
-
-</p>
-
-
-</div>
-
-
-</a>
-
-
-
-
-
-
-
-<a href="#"
-
-class="rede tiktok">
-
-
-<i class="fab fa-tiktok"></i>
-
-
-<div>
-
-<h3>
-
-TikTok
-
-</h3>
-
-
-<p>
-
-@javenstore
-
-</p>
-
-
-</div>
-
-
-</a>
-
-
-
-
-
-
-
-<a href="https://chat.whatsapp.com/Fr5XWIffvC6IwWw6ezyL7W?s=cl&p=a&mlu=0"
-
-class="rede grupo">
-
-
-<i class="fas fa-users"></i>
-
-
-<div>
-
-<h3>
-
-Grupo WhatsApp
-
-</h3>
-
-
-<p>
-
-Promoções e novidades
-
-</p>
-
-
-</div>
-
-
-</a>
-
-
-
-
-</div>
-
-
-
 
 
 
@@ -2427,6 +2259,40 @@ A melhor loja de acessórios tecnológicos de Angola.
     </p>
 
 </footer>
+<script>
+    /* ======== ANIMAÇÃO CONTACTO ======== */
+
+const contactCards = document.querySelectorAll(".rede, .item");
+
+const contactObserver = new IntersectionObserver((entries)=>{
+
+    entries.forEach((entry,index)=>{
+
+        if(entry.isIntersecting){
+
+            setTimeout(()=>{
+
+                entry.target.style.opacity="1";
+                entry.target.style.transform="translateY(0)";
+
+            },index*120);
+
+        }
+
+    });
+
+},{threshold:.2});
+
+contactCards.forEach(card=>{
+
+    card.style.opacity="0";
+    card.style.transform="translateY(40px)";
+    card.style.transition=".6s ease";
+
+    contactObserver.observe(card);
+
+});
+</script>
 <script>
 
 /* =====================
