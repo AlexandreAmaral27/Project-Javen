@@ -657,6 +657,21 @@ padding:30px 5%;
     overflow: hidden;
 }
 
+.rede-item{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:10px;
+    text-decoration:none;
+}
+
+.rede-item span{
+    color:#fff;
+    font-size:14px;
+    font-weight:600;
+    text-align:center;
+}
+
 </style>
 
 
@@ -2008,24 +2023,35 @@ Faça a sua encomenda ou tire dúvidas através das nossas redes.
 
 <div class="redes">
 
-    <a href="https://wa.me/244976173835" class="rede whatsapp" target="_blank">
-        <i class="fab fa-whatsapp"></i>
+    <a href="https://wa.me/244976173835" class="rede-item" target="_blank">
+        <div class="rede whatsapp">
+            <i class="fab fa-whatsapp"></i>
+        </div>
+        <span>WhatsApp</span>
     </a>
 
-    <a href="https://www.instagram.com/javen.store1" class="rede instagram" target="_blank">
-        <i class="fab fa-instagram"></i>
+    <a href="https://www.instagram.com/javen.store1" class="rede-item" target="_blank">
+        <div class="rede instagram">
+            <i class="fab fa-instagram"></i>
+        </div>
+        <span>Instagram</span>
     </a>
 
-    <a href="#" class="rede tiktok">
-        <i class="fab fa-tiktok"></i>
+    <a href="#" class="rede-item" target="_blank">
+        <div class="rede tiktok">
+            <i class="fab fa-tiktok"></i>
+        </div>
+        <span>TikTok</span>
     </a>
 
-    <a href="https://chat.whatsapp.com/Fr5XWIffvC6IwWw6ezyL7W?s=cl&p=a&mlu=0" target="_blank" class="rede grupo">
-        <i class="fas fa-users"></i>
+    <a href="https://chat.whatsapp.com/Fr5XWIffvC6IwWw6ezyL7W?s=cl&p=a&mlu=0" class="rede-item" target="_blank">
+        <div class="rede grupo">
+            <i class="fas fa-users"></i>
+        </div>
+        <span>Grupo WhatsApp</span>
     </a>
 
 </div>
-
 
 
 
