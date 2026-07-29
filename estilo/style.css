@@ -1,0 +1,1516 @@
+
+
+/* =====================
+RESET
+===================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',Arial,sans-serif;
+}
+
+
+html{
+    scroll-behavior:smooth;
+}
+
+
+body{
+    background:#f3f6fb;
+    color:#111827;
+}
+
+
+/* =====================
+HEADER
+===================== */
+
+
+header{
+
+    width:100%;
+    padding:15px 8%;
+
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+
+    background:#0f172a;
+
+    position:sticky;
+    top:0;
+    z-index:1000;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.2);
+
+}
+
+
+
+.logo img{
+
+    width:80px;
+    height:80px;
+
+    object-fit:cover;
+
+    border-radius:50%;
+
+}
+
+
+
+nav ul{
+
+    display:flex;
+    gap:35px;
+
+    list-style:none;
+
+}
+
+
+
+nav a{
+
+    color:white;
+    text-decoration:none;
+
+    font-weight:600;
+
+    position:relative;
+
+    transition:.3s;
+
+}
+
+
+
+nav a:hover{
+
+    color:#00bfff;
+
+}
+
+
+nav a::after{
+
+    content:"";
+
+    position:absolute;
+
+    bottom:-8px;
+    left:0;
+
+    width:0;
+    height:3px;
+
+    background:#00bfff;
+
+    transition:.3s;
+
+}
+
+
+nav a:hover::after{
+
+    width:100%;
+
+}
+
+
+/* ICONES */
+
+
+.icons{
+
+    display:flex;
+    align-items:center;
+
+    gap:20px;
+
+    color:white;
+
+    font-size:22px;
+
+}
+
+
+.cart{
+
+    position:relative;
+
+    cursor:pointer;
+
+}
+
+
+.cart span{
+
+    position:absolute;
+
+    top:-12px;
+    right:-12px;
+
+    background:red;
+
+    width:20px;
+    height:20px;
+
+    border-radius:50%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-size:12px;
+
+}
+
+
+#menu-btn{
+
+    display:none;
+
+    cursor:pointer;
+
+}
+
+
+
+/* =====================
+HERO
+===================== */
+
+.hero{
+    position: relative;
+    min-height: 85vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    padding: 20px;
+
+    background: url("imagens/logo/logo.jpeg") center center/cover no-repeat;
+
+    overflow: hidden;
+}
+
+.hero{
+
+    background:
+
+    linear-gradient(
+    rgba(0,0,0,.55),
+    rgba(0,0,0,.55)
+    ),
+
+    url("imagens/hero.jpg")
+
+    center/cover;
+
+
+    color:white;
+
+}
+
+
+.texto{
+
+    animation:entrada 1s;
+
+}
+
+
+.hero h1{
+
+    font-size:55px;
+
+    max-width:900px;
+
+}
+
+
+
+.hero p{
+
+    font-size:20px;
+
+    margin:20px 0;
+
+}
+
+
+
+.hero button{
+
+
+    padding:15px 45px;
+
+    border:none;
+
+    border-radius:30px;
+
+
+    background:#00bfff;
+
+    color:white;
+
+
+    font-size:18px;
+
+    cursor:pointer;
+
+
+    transition:.3s;
+
+
+}
+
+
+
+.hero button:hover{
+
+    transform:scale(1.05);
+
+    background:#0099dd;
+
+}
+
+
+
+@keyframes entrada{
+
+
+from{
+
+opacity:0;
+
+transform:translateY(50px);
+
+}
+
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+
+}
+
+
+
+/* =====================
+PESQUISA
+===================== */
+
+
+.pesquisa{
+
+    padding:40px 8%;
+
+    text-align:center;
+
+}
+
+
+
+.pesquisa input{
+
+
+    width:70%;
+
+    padding:16px 25px;
+
+    border-radius:40px;
+
+    border:1px solid #ddd;
+
+
+    font-size:16px;
+
+
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+
+}
+
+
+
+.pesquisa input:focus{
+
+    outline:none;
+
+    border:2px solid #00bfff;
+
+}
+
+
+
+/* =====================
+PRODUTOS
+===================== */
+
+
+.produtos{
+
+
+    padding:50px 8%;
+
+
+    display:grid;
+
+    grid-template-columns:
+
+    repeat(auto-fit,minmax(250px,1fr));
+
+
+    gap:30px;
+
+
+}
+
+
+
+.card{
+
+
+    background:white;
+
+
+    border-radius:20px;
+
+
+    padding:20px;
+
+
+    text-align:center;
+
+
+    overflow:hidden;
+
+
+    box-shadow:
+
+    0 10px 25px rgba(0,0,0,.1);
+
+
+    transition:.4s;
+
+
+}
+
+
+
+.card:hover{
+
+
+    transform:translateY(-12px);
+
+
+    box-shadow:
+
+    0 25px 45px rgba(0,0,0,.18);
+
+
+}
+
+
+
+.card img{
+
+
+    width:100%;
+
+    height:230px;
+
+    object-fit:cover;
+
+    border-radius:15px;
+
+
+    transition:.4s;
+
+
+}
+
+
+
+.card:hover img{
+
+
+    transform:scale(1.05);
+
+
+}
+
+
+
+.card h3{
+
+
+    margin:15px 0;
+
+    font-size:22px;
+
+
+}
+
+
+
+.card p{
+
+
+    color:#00bfff;
+
+    font-size:20px;
+
+    font-weight:bold;
+
+
+}
+
+
+
+.card button{
+
+
+    margin-top:15px;
+
+    padding:12px 30px;
+
+
+    border:none;
+
+    border-radius:30px;
+
+
+    background:#00bfff;
+
+
+    color:white;
+
+
+    cursor:pointer;
+
+
+    transition:.3s;
+
+
+}
+
+
+
+.card button:hover{
+
+
+    background:#0f172a;
+
+
+}
+
+
+
+/* =====================
+RESPONSIVO
+===================== */
+
+
+@media(max-width:768px){
+
+
+header{
+
+padding:15px 5%;
+
+}
+
+
+
+.logo img{
+
+width:60px;
+
+height:60px;
+
+}
+
+
+nav{
+
+
+position:absolute;
+
+top:90px;
+
+left:0;
+
+
+width:100%;
+
+
+background:#0f172a;
+
+
+display:none;
+
+
+}
+
+
+
+nav.active{
+
+display:block;
+
+}
+
+
+
+nav ul{
+
+
+flex-direction:column;
+
+padding:25px;
+
+text-align:center;
+
+
+}
+
+
+
+#menu-btn{
+
+display:block;
+
+}
+
+
+
+.hero h1{
+
+font-size:35px;
+
+}
+
+
+
+.hero p{
+
+font-size:16px;
+
+}
+
+
+
+.pesquisa input{
+
+width:100%;
+
+}
+
+
+
+.produtos{
+
+padding:30px 5%;
+
+}
+
+
+
+}
+
+
+
+
+/* =====================
+CARRINHO
+===================== */
+
+
+.carrinho-box{
+
+position:fixed;
+
+right:-450px;
+
+top:0;
+
+width:380px;
+
+height:100vh;
+
+background:white;
+
+z-index:2000;
+
+padding:25px;
+
+box-shadow:-10px 0 30px rgba(0,0,0,.3);
+
+transition:.4s;
+
+overflow:auto;
+
+}
+
+
+
+.carrinho-box.active{
+
+right:0;
+
+}
+
+
+
+.fundo{
+
+position:fixed;
+
+inset:0;
+
+background:rgba(0,0,0,.5);
+
+z-index:1500;
+
+display:none;
+
+}
+
+
+
+.fundo.active{
+
+display:block;
+
+}
+
+
+
+
+.carrinho-header{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+margin-bottom:30px;
+
+}
+
+
+
+.carrinho-header h2{
+
+color:#0f172a;
+
+}
+
+
+
+.carrinho-header i{
+
+font-size:25px;
+
+cursor:pointer;
+
+}
+
+
+
+.produto-carrinho{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+padding:15px 0;
+
+border-bottom:1px solid #ddd;
+
+}
+
+
+
+.produto-carrinho h4{
+
+font-size:16px;
+
+}
+
+
+
+.produto-carrinho span{
+
+color:#00bfff;
+
+font-weight:bold;
+
+}
+
+
+
+.remover{
+
+color:red;
+
+cursor:pointer;
+
+}
+
+
+
+.total{
+
+margin-top:30px;
+
+font-size:20px;
+
+}
+
+
+
+.finalizar{
+
+width:100%;
+
+margin-top:25px;
+
+padding:15px;
+
+border:none;
+
+border-radius:30px;
+
+background:#25D366;
+
+color:white;
+
+font-size:17px;
+
+cursor:pointer;
+
+}
+
+
+
+.finalizar:hover{
+
+background:#128C7E;
+
+}
+
+
+/* =====================
+CARRINHO MOBILE
+===================== */
+
+@media(max-width:500px){
+
+.carrinho-box{
+
+    width:90%;
+    right:-100%;
+
+    border-radius:20px 0 0 20px;
+
+}
+
+
+.carrinho-box.active{
+
+    right:0;
+
+}
+.carrinho-box{
+
+transition:0.5s ease;
+
+}
+
+}
+
+
+/* =====================
+TÍTULO PRODUTOS
+===================== */
+
+
+.titulo-produtos{
+
+    text-align:center;
+
+    padding-top:60px;
+
+    background:#f3f6fb;
+
+}
+
+
+
+.titulo-produtos h2{
+
+
+    font-size:45px;
+
+    font-weight:800;
+
+    color:#098fd8;
+
+
+    position:relative;
+
+    display:inline-block;
+
+
+    margin-bottom:15px;
+
+
+}
+
+
+
+
+.titulo-produtos p{
+
+
+    margin-top:25px;
+
+
+    color:#64748b;
+
+
+    font-size:18px;
+
+
+}
+
+
+
+/* animação */
+
+
+.titulo-produtos h2{
+
+
+    animation:tituloEntrada 1s ease;
+
+
+}
+
+
+
+@keyframes tituloEntrada{
+
+
+from{
+
+opacity:0;
+
+transform:translateY(30px);
+
+}
+
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+
+}
+
+
+
+
+@media(max-width:768px){
+
+
+.titulo-produtos h2{
+
+
+font-size:32px;
+
+
+}
+
+
+.titulo-produtos p{
+
+
+font-size:15px;
+
+
+}
+
+
+}
+
+    /* =====================
+SEÇÕES GERAIS
+===================== */
+
+.info{
+
+    padding:80px 8%;
+    text-align:center;
+
+}
+
+
+.info h2{
+
+    font-size:38px;
+    margin-bottom:25px;
+    color:#0f172a;
+
+}
+
+
+.info p{
+
+    color:#555;
+    line-height:1.7;
+
+}
+
+
+
+/* =====================
+PROMOÇÕES
+===================== */
+
+
+.promocoes{
+
+    background:
+
+    linear-gradient(
+    135deg,
+    #eef7ff,
+    #ffffff
+    );
+
+}
+
+
+
+.promocoes .card{
+
+    border-top:5px solid #00bfff;
+
+}
+
+
+
+.promocoes h2{
+
+    color:#00bfff;
+
+}
+
+
+
+.promocoes .card h2{
+
+    color:#00bfff;
+    margin:15px 0;
+
+}
+
+
+.promocoes del{
+
+    color:#999;
+
+}
+
+
+
+
+
+/* =====================
+CONTACTO
+===================== */
+
+
+.contacto{
+
+    background:
+
+    linear-gradient(
+    135deg,
+    #0f172a,
+    #020617
+    );
+
+    color:white;
+
+}
+
+
+
+.contacto h2{
+
+    color:white;
+
+}
+
+
+.contacto>p{
+
+    color:#ddd;
+
+}
+
+
+
+
+
+/* =====================
+REDES SOCIAIS
+===================== */
+
+/*=========================
+  REDES SOCIAIS CIRCULARES
+=========================*/
+.redes{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:25px;
+    flex-wrap:wrap;
+}
+
+.rede{
+    width:70px;
+    height:70px;
+
+    border-radius:50%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    text-decoration:none;
+
+    background:#111;
+
+    transition:.3s;
+}
+
+.rede i{
+    font-size:30px;
+}
+
+.whatsapp{
+    background:#25D366;
+}
+
+.instagram{
+    background:linear-gradient(45deg,#833AB4,#FD1D1D,#FCAF45);
+}
+
+.tiktok{
+    background:#000;
+}
+
+.grupo{
+    background:#128C7E;
+}
+
+.rede:hover{
+    transform:translateY(-8px) scale(1.1);
+}
+.redes{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:25px;
+    flex-wrap:wrap;
+    margin:60px auto;
+}
+
+.rede{
+    width:75px;
+    height:75px;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-decoration:none;
+    transition:.35s;
+}
+.rede-item{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:10px;
+    text-decoration:none;
+}
+
+.rede-item span{
+    color:#fff;
+    font-size:14px;
+    font-weight:600;
+    text-align:center;
+}
+
+.rede i{
+    font-size:32px;
+    color:#fff;
+}
+
+.whatsapp{
+    background:#25D366;
+}
+
+.instagram{
+    background:linear-gradient(45deg,#F58529,#DD2A7B,#8134AF,#515BD4);
+}
+
+.tiktok{
+    background:#000;
+}
+
+.grupo{
+    background:#128C7E;
+}
+
+
+
+.rede:hover::before{
+    transform:scale(1);
+}
+
+.rede:hover{
+    transform:translateY(-8px) scale(1.08);
+    box-shadow:0 0 25px rgba(0, 191, 255, 0.341);
+}
+
+
+
+@media(max-width:768px){
+
+    .rede{
+        width:60px;
+        height:60px;
+    }
+
+    .rede i{
+        font-size:26px;
+    }
+
+}
+
+
+
+.whatsapp{
+
+
+background:#25D366;
+
+
+}
+
+
+
+.instagram{
+
+
+background:
+
+linear-gradient(
+
+45deg,
+
+#F58529,
+
+#DD2A7B,
+
+#8134AF,
+
+#515BD4
+
+);
+
+
+}
+
+
+
+.tiktok{
+
+
+background:#000;
+
+
+}
+
+
+
+.grupo{
+
+
+background:#128C7E;
+
+
+}
+
+
+
+
+
+
+
+/* =====================
+INFORMAÇÕES EXTRAS
+===================== */
+
+
+.info-extra{
+
+
+display:grid;
+
+
+grid-template-columns:
+
+repeat(auto-fit,minmax(220px,1fr));
+
+
+gap:25px;
+
+
+margin-top:60px;
+
+
+}
+
+
+
+
+.item{
+
+
+padding:30px;
+
+
+border-radius:20px;
+
+
+background:
+
+rgba(255,255,255,.08);
+
+
+backdrop-filter:blur(10px);
+
+
+transition:.4s;
+
+
+}
+
+
+
+.item:hover{
+
+
+transform:translateY(-10px);
+
+
+background:
+
+rgba(255,255,255,.15);
+
+
+}
+
+
+
+
+.item i{
+
+
+font-size:45px;
+
+
+color:#00bfff;
+
+
+margin-bottom:20px;
+
+
+}
+
+
+
+.item h3{
+
+
+margin-bottom:15px;
+
+
+color:white;
+
+
+}
+
+
+
+.item p{
+
+
+color:#ddd;
+
+
+}
+
+
+
+
+
+
+
+/* =====================
+FOOTER
+===================== */
+
+
+footer{
+
+
+background:#020617;
+
+
+padding:60px 20px;
+
+
+text-align:center;
+
+
+color:white;
+
+
+}
+
+
+
+footer h2{
+
+
+font-size:35px;
+
+
+color:#00bfff;
+
+
+margin-bottom:20px;
+
+
+}
+
+
+
+footer p{
+
+
+margin:10px;
+
+
+color:#ddd;
+
+
+}
+
+
+
+footer hr{
+
+
+max-width:600px;
+
+
+margin:30px auto;
+
+
+border:1px solid rgba(255,255,255,.2);
+
+
+}
+
+
+
+
+
+
+
+
+/* =====================
+MOBILE
+===================== */
+
+
+@media(max-width:768px){
+
+
+.info{
+
+padding:60px 5%;
+
+}
+
+
+
+.info h2{
+
+font-size:30px;
+
+}
+
+
+
+.rede{
+
+padding:20px;
+
+}
+
+
+
+.item{
+
+padding:25px;
+
+}
+
+
+footer h2{
+
+font-size:28px;
+
+}
+
+
+
+}
