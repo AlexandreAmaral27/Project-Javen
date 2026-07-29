@@ -11,7 +11,6 @@
 
 </head>
 <body>
-
 <!-- =====================
 HEADER
 ===================== -->
@@ -126,14 +125,32 @@ placeholder="🔎 Pesquisar produtos...">
 
 </section>
 
+<section class="filtros">
 
+<select id="filtroCategoria">
+
+<option value="todos">📦 Todas as Categorias</option>
+
+<option value="cabos">🔌 Cabos</option>
+
+<option value="audio">🎧 Áudio</option>
+
+<option value="carregadores">⚡ Carregadores</option>
+
+<option value="smartwatch">⌚ Smart Watch</option>
+
+<option value="acessorios">📱 Acessórios</option>
+
+</select>
+
+</section>
 <!-- =====================
 PRODUTOS
 ===================== -->
 
 <section class="produtos" id="produtos">
 
-<div class="card">
+<div class="card" data-categoria="cabos">
 
 
 <img src="imagens/logo/logo.jpeg">
@@ -152,7 +169,7 @@ Adicionar
 </div>
 
 
-<div class="card">
+<div class="card" data-categoria="audio">
 
 
 
@@ -173,7 +190,7 @@ Adicionar
 </div>
 
 
-<div class="card">
+<div class="card" data-categoria="cabos">
 
 
 <img src="imagens/logo/logo.jpeg">
@@ -195,7 +212,7 @@ Adicionar
 </div>
 
 
-<div class="card">
+<div class="card" data-categoria="acessorios">
 
 
 <img src="imagens/logo/logo.jpeg">
@@ -217,7 +234,7 @@ Adicionar
 </div>
 
 
-<div class="card">
+<div class="card" data-categoria="audio">
 
 
 <img src="imagens/logo/logo.jpeg">
@@ -239,8 +256,7 @@ Adicionar
 </div>
 
 
-<div class="card">
-
+<div class="card" data-categoria="acessorios">
 
 <img src="imagens/logo/logo.jpeg">
 
@@ -260,7 +276,7 @@ Adicionar
 
 </div>
 
-<div class="card">
+<div class="card" data-categoria="cabos">
 
 
 <img src="imagens/logo/logo.jpeg">
@@ -279,8 +295,7 @@ Adicionar
 </div>
 
 
-<div class="card">
-
+<div class="card" data-categoria="audio">
 
 
 <img src="imagens/logo/logo.jpeg">
@@ -300,7 +315,7 @@ Adicionar
 </div>
 
 
-<div class="card">
+<div class="card" data-categoria="cabos">
 
 
 <img src="imagens/logo/logo.jpeg">
@@ -322,7 +337,7 @@ Adicionar
 </div>
 
 
-<div class="card">
+<div class="card" data-categoria="smartwatch">
 
 
 <img src="imagens/logo/logo.jpeg">
@@ -344,7 +359,7 @@ Adicionar
 </div>
 
 
-<div class="card">
+<div class="card" data-categoria="audio">
 
 
 <img src="imagens/logo/logo.jpeg">
@@ -366,7 +381,7 @@ Adicionar
 </div>
 
 
-<div class="card">
+<div class="card" data-categoria="acessorios">
 
 
 <img src="imagens/logo/logo.jpeg">
@@ -386,7 +401,8 @@ Adicionar
 
 
 </div>
-<div class="card">
+
+<div class="card" data-categoria="cabos">
 
 
 <img src="imagens/logo/logo.jpeg">
@@ -405,7 +421,7 @@ Adicionar
 </div>
 
 
-<div class="card">
+<div class="card" data-categoria="audio">
 
 
 
@@ -426,7 +442,7 @@ Adicionar
 </div>
 
 
-<div class="card">
+<div class="card" data-categoria="cabos">
 
 
 <img src="imagens/logo/logo.jpeg">
@@ -448,7 +464,7 @@ Adicionar
 </div>
 
 
-<div class="card">
+<div class="card" data-categoria="smartwatch">
 
 
 <img src="imagens/logo/logo.jpeg">
@@ -470,8 +486,7 @@ Adicionar
 </div>
 
 
-<div class="card">
-
+<div class="card" data-categoria="audio">
 
 <img src="imagens/logo/logo.jpeg">
 
@@ -492,7 +507,7 @@ Adicionar
 </div>
 
 
-<div class="card">
+<div class="card" data-categoria="acessorios">
 
 
 <img src="imagens/logo/logo.jpeg">
@@ -513,7 +528,7 @@ Adicionar
 
 </div>
 
-<div class="card">
+<div class="card" data-categoria="cabos">
 
 
 <img src="imagens/logo/logo.jpeg">
@@ -534,7 +549,7 @@ Adicionar
 
 </div>
 
-<div class="card">
+<div class="card" data-categoria="acessorios">
 
 
 <img src="imagens/logo/logo.jpeg">
@@ -827,29 +842,47 @@ Seu carrinho está vazio.
 </p>
 
 </div>
+<div class="opcao-entrega">
 
+<button id="btnEntrega" onclick="toggleEntrega()">
 
+<i class="fas fa-motorcycle"></i>
 
-<div class="total">
-
-<h3>
-Total:
-<span id="total">0</span> Kz
-</h3>
-
-</div>
-
-
-
-<button class="finalizar" onclick="finalizarCompra()">
-
-Finalizar Compra WhatsApp
+Entrega por Motorizada (+2.000 Kz)
 
 </button>
 
 </div>
 
+<div class="total">
+    <h3>
+        Total: <span id="total">0</span> Kz
+    </h3>
+</div>
+
+<!-- COORDENADAS BANCÁRIAS -->
+<div class="dados-pagamento">
+    <h3>💳 Dados para Pagamento</h3>
+
+    <p><strong>Banco:</strong> BAI</p>
+
+    <p><strong>IBAN:</strong> AO06 XXXX XXXX XXXX XXXX XXXX X</p>
+
+    <p><strong>Titular:</strong> Joao Miguel</p>
+
+    <p><strong>Multicaixa Express:</strong> 976 173 835</p>
+</div>
+
+<button class="finalizar" onclick="finalizarCompra()">
+    Finalizar Compra WhatsApp
+</button>
+
+
+
+</div>
+
 <div class="fundo" id="fundo" onclick="fecharCarrinho()"></div>
+
 
 
 <!-- =====================

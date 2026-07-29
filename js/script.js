@@ -56,7 +56,36 @@ CARRINHO
 
 let carrinho = [];
 
+let taxaEntrega = 0;
+let entregaAtiva = false;
 
+function toggleEntrega(){
+
+    const btn = document.getElementById("btnEntrega");
+
+    entregaAtiva = !entregaAtiva;
+
+    if(entregaAtiva){
+
+        taxaEntrega = 2000;
+
+        btn.classList.add("ativo");
+
+        btn.innerHTML =
+        '<i class="fas fa-motorcycle"></i> Entrega Selecionada (+2.000 Kz)';
+
+    }else{
+
+        taxaEntrega = 0;
+
+        btn.classList.remove("ativo");
+
+        btn.innerHTML =
+        '<i class="fas fa-motorcycle"></i> Entrega por Motorizada (+2.000 Kz)';
+    }
+
+    mostrarCarrinho();
+}
 
 function addCarrinho(nome, preco){
 
@@ -218,11 +247,10 @@ onclick="removerProduto(${index})">
 
 
 
+let totalFinal = total + taxaEntrega;
 
 document.getElementById("total").innerHTML =
-
-total.toLocaleString('pt-PT');
-
+totalFinal.toLocaleString('pt-PT');
 
 
 
@@ -359,8 +387,18 @@ mensagem +=
 
 });
 
+if(entregaAtiva){
 
+    mensagem +=
+    "🏍️ Entrega por Motorizada: 2.000 Kz%0A%0A";
 
+    total += taxaEntrega;
+
+}else{
+
+    mensagem +=
+    "🏪 Levantamento na Loja%0A%0A";
+}
 
 mensagem +=
 
@@ -549,5 +587,25 @@ behavior:"smooth"
 };
 
 
+    
+    const filtro = document.getElementById("filtroCategoria");
 
+filtro.addEventListener("change", () => {
 
+    const categoria = filtro.value;
+    const cards = document.querySelectorAll(".produtos .card");
+
+    cards.forEach(card => {
+
+        if(
+            categoria === "todos" ||
+            card.dataset.categoria === categoria
+        ){
+            card.style.display = "block";
+        }else{
+            card.style.display = "none";
+        }
+
+    });
+
+});
