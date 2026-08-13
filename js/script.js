@@ -338,120 +338,140 @@ document.getElementById("fundo")
 
 
 /* =====================
-FINALIZAR WHATSAPP
+   FINALIZAR WHATSAPP
 ===================== */
 
+function finalizarCompra() {
 
-function finalizarCompra(){
+    if (carrinho.length === 0) {
+        alert("🛒 O carrinho está vazio!");
+        return;
+    }
 
+    let totalProdutos = 0;
+    let quantidadeTotal = 0;
 
+    // Cabeçalho
+    let mensagem =
+`🛍️ *JAVEN STORE*
+━━━━━━━━━━━━━━━━━━━━
 
-if(carrinho.length === 0){
+📋 *NOVA ENCOMENDA*
 
+📦 *PRODUTOS*
+`;
 
-alert("O carrinho está vazio!");
+    // Produtos
+    carrinho.forEach((produto, index) => {
 
-return;
+        const subtotal = produto.preco * produto.quantidade;
 
+        totalProdutos += subtotal;
+        quantidadeTotal += produto.quantidade;
 
-}
+        mensagem += `
+${index + 1}. *${produto.nome}*
+   🔢 Quantidade: ${produto.quantidade}
+   💰 Preço: ${produto.preco.toLocaleString("pt-PT")} Kz
+   💵 Subtotal: ${subtotal.toLocaleString("pt-PT")} Kz
+`;
+    });
 
+    let totalFinal = totalProdutos;
 
-
-let mensagem = 
-
-"🛒 *NOVA ENCOMENDA JAVEN STORE*%0A%0A";
-
-
-
-let total = 0;
-
-
-
-carrinho.forEach(produto=>{
-
-
-let subtotal = produto.preco * produto.quantidade;
-
-
-
-total += subtotal;
-
-
-
-
-mensagem +=
-
-`📦 Produto: ${produto.nome}%0A`+
-
-`🔢 Quantidade: ${produto.quantidade}%0A`+
-
-`💰 Preço: ${produto.preco.toLocaleString('pt-PT')} Kz%0A`+
-
-`💵 Subtotal: ${subtotal.toLocaleString('pt-PT')} Kz%0A%0A`;
-
-
-
-});
-
-if(taxaEntrega > 0){
+    // Forma de entrega
+    mensagem += `
+━━━━━━━━━━━━━━━━━━━━
+🚚 *ENTREGA*
+`;
 
     const select = document.getElementById("localEntrega");
 
-    const local =
-        select.options[select.selectedIndex].text
-        .split("—")[0]
-        .trim();
+    if (select) {
+
+        const opcaoSelecionada =
+            select.options[select.selectedIndex].text;
+
+        // Entrega com preço
+        if (taxaEntrega > 0) {
+
+            const local =
+                opcaoSelecionada
+                    .split("—")[0]
+                    .trim();
+
+            mensagem +=
+`📍 Local: ${local}
+💸 Taxa de entrega: ${taxaEntrega.toLocaleString("pt-PT")} Kz
+`;
+
+            totalFinal += taxaEntrega;
+
+        }
+
+        // Outra localização
+        else if (
+            opcaoSelecionada.includes("Outra localização")
+        ) {
+
+            mensagem +=
+`📍 Local: Outra localização
+💸 Taxa de entrega: Preço a consultar
+`;
+
+        }
+
+        // Levantamento
+        else {
+
+            mensagem +=
+`🏪 Método: Levantamento na Loja
+`;
+
+        }
+    }
+
+    // Resumo final
+    mensagem += `
+━━━━━━━━━━━━━━━━━━━━
+📊 *RESUMO DA ENCOMENDA*
+
+📦 Produtos: ${quantidadeTotal}
+💰 Produtos: ${totalProdutos.toLocaleString("pt-PT")} Kz
+`;
+
+    if (taxaEntrega > 0) {
+
+        mensagem +=
+`🚚 Entrega: ${taxaEntrega.toLocaleString("pt-PT")} Kz
+`;
+
+    }
 
     mensagem +=
-    `🚚 ${local}: ${taxaEntrega.toLocaleString('pt-PT')} Kz%0A%0A`;
+`
+💳 *TOTAL: ${totalFinal.toLocaleString("pt-PT")} Kz*
 
-    total += taxaEntrega;
+━━━━━━━━━━━━━━━━━━━━
+⏳ *Status:* 🟡 Aguardando confirmação
 
-}else{
+🙏 Obrigado por escolher a *JAVEN STORE*!
+`;
 
-    const select = document.getElementById("localEntrega");
+    // Número do WhatsApp
+    const numero = "244947536480";
 
-    const opcao =
-        select.options[select.selectedIndex].text;
+    // Codifica corretamente toda a mensagem
+    const mensagemCodificada =
+        encodeURIComponent(mensagem);
 
-    if(opcao.includes("Outra localização")){
-
-        mensagem +=
-        "🚚 Entrega: Preço a consultar%0A%0A";
-
-    }else{
-
-        mensagem +=
-        "🏪 Levantamento na Loja%0A%0A";
-    }
+    // Abre o WhatsApp
+    window.open(
+        `https://wa.me/${numero}?text=${mensagemCodificada}`,
+        "_blank"
+    );
 }
 
-mensagem +=
-
-"================%0A"+
-
-`💰 TOTAL: ${total.toLocaleString('pt-PT')} Kz`;
-
-
-
-
-
-let numero = "244976173835";
-
-
-
-window.open(
-
-"https://wa.me/"+numero+"?text="+mensagem,
-
-"_blank"
-
-);
-
-
-
-}
 
 
 
