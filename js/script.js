@@ -344,55 +344,55 @@ document.getElementById("fundo")
 function finalizarCompra() {
 
     if (carrinho.length === 0) {
-        alert("🛒 O carrinho está vazio!");
+
+        alert("\u{1F6D2} O carrinho está vazio!");
+
         return;
     }
 
     let totalProdutos = 0;
     let quantidadeTotal = 0;
 
-    // Cabeçalho
     let mensagem =
-`🛍️ *JAVEN STORE*
+`\u{1F6CD}\uFE0F *JAVEN STORE*
 ━━━━━━━━━━━━━━━━━━━━
 
-📋 *NOVA ENCOMENDA*
+\u{1F4CB} *NOVA ENCOMENDA*
 
-📦 *PRODUTOS*
+\u{1F4E6} *PRODUTOS*
 `;
 
-    // Produtos
     carrinho.forEach((produto, index) => {
 
-        const subtotal = produto.preco * produto.quantidade;
+        const subtotal =
+            produto.preco * produto.quantidade;
 
         totalProdutos += subtotal;
         quantidadeTotal += produto.quantidade;
 
         mensagem += `
 ${index + 1}. *${produto.nome}*
-   🔢 Quantidade: ${produto.quantidade}
-   💰 Preço: ${produto.preco.toLocaleString("pt-PT")} Kz
-   💵 Subtotal: ${subtotal.toLocaleString("pt-PT")} Kz
+   \u{1F522} Quantidade: ${produto.quantidade}
+   \u{1F4B0} Preço: ${produto.preco.toLocaleString("pt-PT")} Kz
+   \u{1F4B5} Subtotal: ${subtotal.toLocaleString("pt-PT")} Kz
 `;
     });
 
     let totalFinal = totalProdutos;
 
-    // Forma de entrega
     mensagem += `
 ━━━━━━━━━━━━━━━━━━━━
-🚚 *ENTREGA*
+\u{1F69A} *ENTREGA*
 `;
 
-    const select = document.getElementById("localEntrega");
+    const select =
+        document.getElementById("localEntrega");
 
     if (select) {
 
         const opcaoSelecionada =
             select.options[select.selectedIndex].text;
 
-        // Entrega com preço
         if (taxaEntrega > 0) {
 
             const local =
@@ -401,80 +401,65 @@ ${index + 1}. *${produto.nome}*
                     .trim();
 
             mensagem +=
-`📍 Local: ${local}
-💸 Taxa de entrega: ${taxaEntrega.toLocaleString("pt-PT")} Kz
+`\u{1F4CD} Local: ${local}
+\u{1F4B8} Taxa de entrega: ${taxaEntrega.toLocaleString("pt-PT")} Kz
 `;
 
             totalFinal += taxaEntrega;
 
-        }
-
-        // Outra localização
-        else if (
+        } else if (
             opcaoSelecionada.includes("Outra localização")
         ) {
 
             mensagem +=
-`📍 Local: Outra localização
-💸 Taxa de entrega: Preço a consultar
+`\u{1F4CD} Local: Outra localização
+\u{1F4B8} Taxa de entrega: Preço a consultar
 `;
 
-        }
-
-        // Levantamento
-        else {
+        } else {
 
             mensagem +=
-`🏪 Método: Levantamento na Loja
+`\u{1F3EA} Método: Levantamento na Loja
 `;
-
         }
     }
 
-    // Resumo final
     mensagem += `
 ━━━━━━━━━━━━━━━━━━━━
-📊 *RESUMO DA ENCOMENDA*
+\u{1F4CA} *RESUMO DA ENCOMENDA*
 
-📦 Produtos: ${quantidadeTotal}
-💰 Produtos: ${totalProdutos.toLocaleString("pt-PT")} Kz
+\u{1F4E6} Produtos: ${quantidadeTotal}
+\u{1F4B0} Produtos: ${totalProdutos.toLocaleString("pt-PT")} Kz
 `;
 
     if (taxaEntrega > 0) {
 
         mensagem +=
-`🚚 Entrega: ${taxaEntrega.toLocaleString("pt-PT")} Kz
+`\u{1F69A} Entrega: ${taxaEntrega.toLocaleString("pt-PT")} Kz
 `;
-
     }
 
     mensagem +=
 `
-💳 *TOTAL: ${totalFinal.toLocaleString("pt-PT")} Kz*
-
 ━━━━━━━━━━━━━━━━━━━━
-⏳ *Status:* 🟡 Aguardando confirmação
+\u{1F4B3} *TOTAL: ${totalFinal.toLocaleString("pt-PT")} Kz*
+━━━━━━━━━━━━━━━━━━━━
 
-🙏 Obrigado por escolher a *JAVEN STORE*!
+\u{23F3} *Status:* \u{1F7E1} Aguardando confirmação
+
+\u{1F64F} Obrigado por escolher a *JAVEN STORE*!
 `;
 
-    // Número do WhatsApp
-    const numero = "244947536480";
+    const numero = "244976173835";
 
-    // Codifica corretamente toda a mensagem
     const mensagemCodificada =
         encodeURIComponent(mensagem);
 
-    // Abre o WhatsApp
     window.open(
         `https://wa.me/${numero}?text=${mensagemCodificada}`,
         "_blank"
     );
 }
-
-
-
-
 
 
 
