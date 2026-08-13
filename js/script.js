@@ -59,29 +59,36 @@ let carrinho = [];
 let taxaEntrega = 0;
 let entregaAtiva = false;
 
-function toggleEntrega(){
+function atualizarEntrega(){
 
-    const btn = document.getElementById("btnEntrega");
+    const select = document.getElementById("localEntrega");
+    const valorTexto = document.getElementById("valorEntrega");
 
-    entregaAtiva = !entregaAtiva;
+    if(!select) return;
 
-    if(entregaAtiva){
+    taxaEntrega = Number(select.value);
 
-        taxaEntrega = 2000;
+    const opcaoSelecionada =
+        select.options[select.selectedIndex].text;
 
-        btn.classList.add("ativo");
-
-        btn.innerHTML =
-        '<i class="fas fa-motorcycle"></i> Entrega Selecionada (+2.000 Kz)';
-
-    }else{
+    // Outra localização
+    if(opcaoSelecionada.includes("Outra localização")){
 
         taxaEntrega = 0;
 
-        btn.classList.remove("ativo");
+        valorTexto.innerHTML =
+            "🚚 Entrega: <strong>Preço a consultar</strong>";
 
-        btn.innerHTML =
-        '<i class="fas fa-motorcycle"></i> Entrega por Motorizada (+2.000 Kz)';
+        entregaAtiva = false;
+
+    }else{
+
+        entregaAtiva = taxaEntrega > 0;
+
+        valorTexto.innerHTML =
+            "🚚 Entrega: <strong>" +
+            taxaEntrega.toLocaleString("pt-PT") +
+            " Kz</strong>";
     }
 
     mostrarCarrinho();
@@ -387,17 +394,37 @@ mensagem +=
 
 });
 
-if(entregaAtiva){
+if(taxaEntrega > 0){
+
+    const select = document.getElementById("localEntrega");
+
+    const local =
+        select.options[select.selectedIndex].text
+        .split("—")[0]
+        .trim();
 
     mensagem +=
-    "🏍️ Entrega por Motorizada: 2.000 Kz%0A%0A";
+    `🚚 ${local}: ${taxaEntrega.toLocaleString('pt-PT')} Kz%0A%0A`;
 
     total += taxaEntrega;
 
 }else{
 
-    mensagem +=
-    "🏪 Levantamento na Loja%0A%0A";
+    const select = document.getElementById("localEntrega");
+
+    const opcao =
+        select.options[select.selectedIndex].text;
+
+    if(opcao.includes("Outra localização")){
+
+        mensagem +=
+        "🚚 Entrega: Preço a consultar%0A%0A";
+
+    }else{
+
+        mensagem +=
+        "🏪 Levantamento na Loja%0A%0A";
+    }
 }
 
 mensagem +=

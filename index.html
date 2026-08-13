@@ -8,6 +8,102 @@
 <link rel="stylesheet" href="estilo/style.css">
 <title>Javen Store</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+<style>
+.aviso-pagamento {
+    margin-top: 15px;
+    padding: 12px;
+    border-radius: 8px;
+    background: #fff3cd;
+    border: 1px solid #ffc107;
+    color: #856404;
+    font-size: 14px;
+    line-height: 1.5;
+
+    /* =========================
+   ÁREA DE ENTREGA
+========================= */
+
+.opcao-entrega {
+    margin: 18px 0;
+    padding: 18px;
+    background: linear-gradient(145deg, #f8f9fa, #eef1f4);
+    border: 1px solid #ddd;
+    border-radius: 14px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+/* Título */
+.opcao-entrega label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 15px;
+    color: #222;
+}
+
+/* Select */
+.opcao-entrega select {
+    width: 100%;
+    padding: 13px 15px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background: #fff;
+    color: #222;
+    font-size: 14px;
+    font-weight: 500;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Efeito ao clicar */
+.opcao-entrega select:focus {
+    border-color: #00bfff;
+    box-shadow: 0 0 0 3px rgba(0, 191, 255, 0.15);
+}
+
+/* Hover */
+.opcao-entrega select:hover {
+    border-color: #00bfff;
+}
+
+/* Valor da entrega */
+.valor-entrega {
+    margin: 12px 0 0;
+    padding: 10px 12px;
+    border-radius: 8px;
+    background: rgba(0, 191, 255, 0.08);
+    color: #007fa8;
+    font-size: 14px;
+    text-align: center;
+}
+
+.valor-entrega strong {
+    font-weight: 700;
+}
+
+/* Responsivo */
+@media (max-width: 480px) {
+
+    .opcao-entrega {
+        padding: 15px;
+        margin: 15px 0;
+    }
+
+    .opcao-entrega label {
+        font-size: 14px;
+    }
+
+    .opcao-entrega select {
+        padding: 12px;
+        font-size: 13px;
+    }
+
+    .valor-entrega {
+        font-size: 13px;
+    }
+}
+}
+</style>
 
 </head>
 <body>
@@ -840,13 +936,25 @@ Seu carrinho está vazio.
 </div>
 <div class="opcao-entrega">
 
-<button id="btnEntrega" onclick="toggleEntrega()">
+    <label for="localEntrega">
+        🚚 <strong>Localização da Entrega</strong>
+    </label>
 
-<i class="fas fa-motorcycle"></i>
+    <select id="localEntrega" onchange="atualizarEntrega()">
+        <option value="0">📍 Levantamento — 0 Kz</option>
+        <option value="2000">🏙️ Luanda — +2.000 Kz</option>
+        <option value="3000">📍 Viana — +3.000 Kz</option>
+        <option value="3500">📍 Cacuaco — +3.500 Kz</option>
+        <option value="4000">📍 Talatona — +4.000 Kz</option>
+        <option value="4500">📍 Kilamba — +4.500 Kz</option>
+        <option value="5000">📍 Benfica — +5.000 Kz</option>
+        <option value="6000">📍 Zango — +6.000 Kz</option>
+        <option value="0">🌍 Outra localização — Consultar preço</option>
+    </select>
 
-Entrega por Motorizada (+2.000 Kz)
-
-</button>
+    <p id="valorEntrega" class="valor-entrega">
+        🚚 Entrega: <strong>0 Kz</strong>
+    </p>
 
 </div>
 
@@ -860,13 +968,27 @@ Entrega por Motorizada (+2.000 Kz)
 <div class="dados-pagamento">
     <h3>💳 Dados para Pagamento</h3>
 
-    <p><strong>Banco:</strong> BAI</p>
+    <p><strong>Banco:</strong> BFA</p>
 
-    <p><strong>IBAN:</strong> AO06 XXXX XXXX XXXX XXXX XXXX X</p>
-
+    <p><strong>IBAN:</strong> AO06 0006 0000 5500 8022 3014 1</p>
+    
     <p><strong>Titular:</strong> Joao Miguel</p>
 
+    <p><strong>Banco:</strong> BIC</p>
+
+    <p><strong>IBAN:</strong> AO06 0051 0000 4779 9497 1011 4</p>
+    
+    <p><strong>Titular:</strong> Domingas Miguel</p>
+
     <p><strong>Multicaixa Express:</strong> 976 173 835</p>
+
+     <div class="aviso-pagamento">
+        ⚠️ <strong>ATENÇÃO:</strong> Se não for uma transferência pelo
+        <strong>Multicaixa Express</strong> ou entre contas do <strong>mesmo banco</strong>,
+        evite fazer a transferência para prevenir possíveis <strong>burlas ou erros no pagamento</strong>.
+        Confirme sempre os dados antes de efetuar o pagamento.
+    </div>
+
 </div>
 
 <button class="finalizar" onclick="finalizarCompra()">
