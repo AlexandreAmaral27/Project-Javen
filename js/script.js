@@ -336,7 +336,6 @@ document.getElementById("fundo")
 
 
 
-
 /* =====================
    FINALIZAR WHATSAPP
 ===================== */
@@ -345,53 +344,124 @@ function finalizarCompra() {
 
     if (carrinho.length === 0) {
 
-        alert("\u{1F6D2} O carrinho está vazio!");
+        alert(
+            String.fromCodePoint(0x1F6D2) +
+            " O carrinho está vazio!"
+        );
 
         return;
     }
 
+
+    /* =====================
+       EMOJIS
+       Gerados pelo JavaScript
+       para evitar problemas de codificação
+    ===================== */
+
+    const emoji = {
+
+        loja: String.fromCodePoint(0x1F6CD, 0xFE0F),
+
+        lista: String.fromCodePoint(0x1F4CB),
+
+        caixa: String.fromCodePoint(0x1F4E6),
+
+        numero: String.fromCodePoint(0x1F522),
+
+        dinheiro: String.fromCodePoint(0x1F4B0),
+
+        dinheiro2: String.fromCodePoint(0x1F4B5),
+
+        entrega: String.fromCodePoint(0x1F69A),
+
+        local: String.fromCodePoint(0x1F4CD),
+
+        pagamento: String.fromCodePoint(0x1F4B8),
+
+        lojaFisica: String.fromCodePoint(0x1F3EA),
+
+        grafico: String.fromCodePoint(0x1F4CA),
+
+        cartao: String.fromCodePoint(0x1F4B3),
+
+        espera: String.fromCodePoint(0x23F3),
+
+        status: String.fromCodePoint(0x1F7E1),
+
+        obrigado: String.fromCodePoint(0x1F64F)
+
+    };
+
+
     let totalProdutos = 0;
+
     let quantidadeTotal = 0;
 
+
+    /* =====================
+       CABEÇALHO
+    ===================== */
+
     let mensagem =
-`\u{1F6CD}\uFE0F *JAVEN STORE*
+`${emoji.loja} *JAVEN STORE*
 ━━━━━━━━━━━━━━━━━━━━
 
-\u{1F4CB} *NOVA ENCOMENDA*
+${emoji.lista} *NOVA ENCOMENDA*
 
-\u{1F4E6} *PRODUTOS*
+${emoji.caixa} *PRODUTOS*
 `;
+
+
+    /* =====================
+       PRODUTOS
+    ===================== */
 
     carrinho.forEach((produto, index) => {
 
         const subtotal =
             produto.preco * produto.quantidade;
 
+
         totalProdutos += subtotal;
+
         quantidadeTotal += produto.quantidade;
+
 
         mensagem += `
 ${index + 1}. *${produto.nome}*
-   \u{1F522} Quantidade: ${produto.quantidade}
-   \u{1F4B0} Preço: ${produto.preco.toLocaleString("pt-PT")} Kz
-   \u{1F4B5} Subtotal: ${subtotal.toLocaleString("pt-PT")} Kz
+   ${emoji.numero} Quantidade: ${produto.quantidade}
+   ${emoji.dinheiro} Preço: ${produto.preco.toLocaleString("pt-PT")} Kz
+   ${emoji.dinheiro2} Subtotal: ${subtotal.toLocaleString("pt-PT")} Kz
 `;
+
     });
+
 
     let totalFinal = totalProdutos;
 
+
+    /* =====================
+       ENTREGA
+    ===================== */
+
     mensagem += `
 ━━━━━━━━━━━━━━━━━━━━
-\u{1F69A} *ENTREGA*
+${emoji.entrega} *ENTREGA*
 `;
+
 
     const select =
         document.getElementById("localEntrega");
+
 
     if (select) {
 
         const opcaoSelecionada =
             select.options[select.selectedIndex].text;
+
+
+        /* ENTREGA COM PREÇO */
 
         if (taxaEntrega > 0) {
 
@@ -400,67 +470,104 @@ ${index + 1}. *${produto.nome}*
                     .split("—")[0]
                     .trim();
 
+
             mensagem +=
-`\u{1F4CD} Local: ${local}
-\u{1F4B8} Taxa de entrega: ${taxaEntrega.toLocaleString("pt-PT")} Kz
+`${emoji.local} Local: ${local}
+${emoji.pagamento} Taxa de entrega: ${taxaEntrega.toLocaleString("pt-PT")} Kz
 `;
+
 
             totalFinal += taxaEntrega;
 
-        } else if (
+        }
+
+
+        /* OUTRA LOCALIZAÇÃO */
+
+        else if (
             opcaoSelecionada.includes("Outra localização")
         ) {
 
             mensagem +=
-`\u{1F4CD} Local: Outra localização
-\u{1F4B8} Taxa de entrega: Preço a consultar
+`${emoji.local} Local: Outra localização
+${emoji.pagamento} Taxa de entrega: Preço a consultar
 `;
 
-        } else {
+        }
+
+
+        /* LEVANTAMENTO */
+
+        else {
 
             mensagem +=
-`\u{1F3EA} Método: Levantamento na Loja
+`${emoji.lojaFisica} Método: Levantamento na Loja
 `;
+
         }
+
     }
+
+
+    /* =====================
+       RESUMO
+    ===================== */
 
     mensagem += `
 ━━━━━━━━━━━━━━━━━━━━
-\u{1F4CA} *RESUMO DA ENCOMENDA*
+${emoji.grafico} *RESUMO DA ENCOMENDA*
 
-\u{1F4E6} Produtos: ${quantidadeTotal}
-\u{1F4B0} Produtos: ${totalProdutos.toLocaleString("pt-PT")} Kz
+${emoji.caixa} Produtos: ${quantidadeTotal}
+${emoji.dinheiro} Produtos: ${totalProdutos.toLocaleString("pt-PT")} Kz
 `;
+
 
     if (taxaEntrega > 0) {
 
         mensagem +=
-`\u{1F69A} Entrega: ${taxaEntrega.toLocaleString("pt-PT")} Kz
+`${emoji.entrega} Entrega: ${taxaEntrega.toLocaleString("pt-PT")} Kz
 `;
+
     }
+
+
+    /* =====================
+       TOTAL
+    ===================== */
 
     mensagem +=
 `
 ━━━━━━━━━━━━━━━━━━━━
-\u{1F4B3} *TOTAL: ${totalFinal.toLocaleString("pt-PT")} Kz*
+${emoji.cartao} *TOTAL: ${totalFinal.toLocaleString("pt-PT")} Kz*
 ━━━━━━━━━━━━━━━━━━━━
 
-\u{23F3} *Status:* \u{1F7E1} Aguardando confirmação
+${emoji.espera} *Status:* ${emoji.status} Aguardando confirmação
 
-\u{1F64F} Obrigado por escolher a *JAVEN STORE*!
+${emoji.obrigado} Obrigado por escolher a *JAVEN STORE*!
 `;
 
+
+    /* =====================
+       WHATSAPP
+    ===================== */
+
     const numero = "244976173835";
+
 
     const mensagemCodificada =
         encodeURIComponent(mensagem);
 
-    window.open(
-        `https://wa.me/${numero}?text=${mensagemCodificada}`,
-        "_blank"
-    );
-}
 
+    const url =
+        "https://wa.me/" +
+        numero +
+        "?text=" +
+        mensagemCodificada;
+
+
+    window.open(url, "_blank");
+
+}
 
 
 
